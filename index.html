@@ -436,12 +436,64 @@
             background: rgba(255,255,255,0.08);
             margin: 6px 16px;
         }
+                /* ── Mobile Dock Drop-up (Vitre/Glass Style) ── */
+        .dock-menu-item {
+            flex: 1;
+            position: relative;
+        }
+        .dock-dropdown {
+            position: absolute;
+            bottom: calc(100% + 12px);
+            left: 50%;
+            transform: translateX(-50%) translateY(10px) scale(0.95);
+            background: rgba(0,19,96,0.95);
+            backdrop-filter: blur(30px) saturate(1.8);
+            -webkit-backdrop-filter: blur(30px) saturate(1.8);
+            border: 1px solid rgba(255,255,255,0.12);
+            border-bottom: 2px solid #bb0013;
+            box-shadow: 0 -10px 40px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.08);
+            border-radius: 20px;
+            padding: 10px 0;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.35s cubic-bezier(0.34,1.56,0.64,1);
+            min-width: 220px;
+            z-index: 100;
+        }
+        .dock-dropdown.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(-50%) translateY(0) scale(1);
+        }
+        .dock-dropdown::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(160deg, rgba(255,255,255,0.08) 0%, transparent 50%);
+            border-radius: 20px;
+            pointer-events: none;
+        }
+        /* Arrow pointing down to the dock item */
+        .dock-dropdown::after {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            left: 50%;
+            transform: translateX(-50%) rotate(45deg);
+            width: 12px;
+            height: 12px;
+            background: #bb0013;
+            border-right: 1px solid rgba(255,255,255,0.12);
+            border-bottom: 1px solid rgba(255,255,255,0.12);
+            z-index: -1;
+        }
+
         /* ── Mobile Dock ── */
         #mobile-dock {
             transition: transform 0.5s cubic-bezier(0.34,1.56,0.64,1);
         }
         #mobile-dock .dock-inner {
-            background: rgba(0,19,96,0.88);
+            background: rgba(0,19,96,0.92);
             backdrop-filter: blur(24px);
             -webkit-backdrop-filter: blur(24px);
             border: 1px solid rgba(255,255,255,0.15);
@@ -477,10 +529,10 @@
             transition: color 0.2s;
             white-space: nowrap;
         }
-        .dock-item.active, .dock-item:hover {
+        .dock-item.active, .dock-item:hover, .dock-item.active-menu {
             color: #ffffff;
         }
-        .dock-item.active .dock-icon, .dock-item:hover .dock-icon {
+        .dock-item.active .dock-icon, .dock-item:hover .dock-icon, .dock-item.active-menu .dock-icon {
             transform: translateY(-4px) scale(1.25);
             color: #ffffff;
         }
@@ -496,7 +548,7 @@
             background: #bb0013;
             transition: transform 0.25s cubic-bezier(0.34,1.56,0.64,1);
         }
-        .dock-item.active::after, .dock-item:hover::after {
+        .dock-item.active::after, .dock-item:hover::after, .dock-item.active-menu::after {
             transform: translateX(-50%) scaleX(1);
         }
         /* Devis central button */
@@ -1689,15 +1741,91 @@
     }
 </script>
 
-<!-- Mobile Dock (iOS Style) -->
+<!-- Mobile Dock (iOS Style with Drop-ups) -->
 <nav id="mobile-dock" class="lg:hidden fixed bottom-4 left-1/2 -translate-x-1/2 z-[60] w-[96%] max-w-[500px]">
-  <div class="dock-inner rounded-[24px] px-1 py-0.5 flex items-stretch">
-    <a href="#a-propos" class="dock-item" data-section="a-propos"><span class="dock-icon material-symbols-outlined">info</span><span class="dock-label">À Propos</span></a>
-<a href="#produits" class="dock-item" data-section="produits"><span class="dock-icon material-symbols-outlined">grid_view</span><span class="dock-label">Produits</span></a>
-<a href="#solutions" class="dock-item" data-section="solutions"><span class="dock-icon material-symbols-outlined">architecture</span><span class="dock-label">Solutions</span></a>
-<a href="#particuliers" class="dock-item" data-section="particuliers"><span class="dock-icon material-symbols-outlined">home_work</span><span class="dock-label">Particuliers</span></a>
-<a href="#professionnel" class="dock-item" data-section="professionnel"><span class="dock-icon material-symbols-outlined">domain</span><span class="dock-label">Pro</span></a>
-<a href="#localisations" class="dock-item" data-section="localisations"><span class="dock-icon material-symbols-outlined">location_on</span><span class="dock-label">Agences</span></a>
+  <div class="dock-inner rounded-[28px] px-2 py-1.5 flex items-stretch border-t border-white/20 bg-[#001360]/90 backdrop-blur-2xl">
+    
+    <!-- À Propos -->
+    <div class="dock-menu-item">
+      <a href="#a-propos" class="dock-item" data-section="a-propos" onclick="toggleDockMenu('dock-menu-propos', event)">
+        <span class="dock-icon material-symbols-outlined">info</span>
+        <span class="dock-label">À Propos</span>
+      </a>
+      <div id="dock-menu-propos" class="dock-dropdown">
+          <a class="nav-sub-link" href="#a-propos" onclick="closeDockMenus()"><span class="material-symbols-outlined sub-icon">history</span>Notre Histoire</a>
+          <a class="nav-sub-link" href="#a-propos" onclick="closeDockMenus()"><span class="material-symbols-outlined sub-icon">visibility</span>Notre Vision</a>
+          <a class="nav-sub-link" href="#a-propos" onclick="closeDockMenus()"><span class="material-symbols-outlined sub-icon">diamond</span>Nos Valeurs</a>
+      </div>
+    </div>
+
+    <!-- Produits -->
+    <div class="dock-menu-item">
+      <a href="#produits" class="dock-item" data-section="produits" onclick="toggleDockMenu('dock-menu-produits', event)">
+        <span class="dock-icon material-symbols-outlined">grid_view</span>
+        <span class="dock-label">Produits</span>
+      </a>
+      <div id="dock-menu-produits" class="dock-dropdown">
+          <a class="nav-sub-link" href="#produits" onclick="closeDockMenus(); openProductModal('vitres')"><span class="material-symbols-outlined sub-icon">window</span>Vitres & Vitrages</a>
+          <a class="nav-sub-link" href="#produits" onclick="closeDockMenus(); openProductModal('carreaux')"><span class="material-symbols-outlined sub-icon">grid_view</span>Carreaux</a>
+          <a class="nav-sub-link" href="#produits" onclick="closeDockMenus(); openProductModal('accessoires')"><span class="material-symbols-outlined sub-icon">build</span>Accessoires</a>
+          <div class="nav-sub-divider"></div>
+          <a class="nav-sub-link" href="#produits" onclick="closeDockMenus(); openProductModal('douche')"><span class="material-symbols-outlined sub-icon">shower</span>Douche</a>
+          <a class="nav-sub-link" href="#produits" onclick="closeDockMenus(); openProductModal('plomberie')"><span class="material-symbols-outlined sub-icon">plumbing</span>Plomberie</a>
+      </div>
+    </div>
+
+    <!-- Solutions -->
+    <div class="dock-menu-item">
+      <a href="#solutions" class="dock-item" data-section="solutions" onclick="toggleDockMenu('dock-menu-solutions', event)">
+        <span class="dock-icon material-symbols-outlined">architecture</span>
+        <span class="dock-label">Solutions</span>
+      </a>
+      <div id="dock-menu-solutions" class="dock-dropdown">
+          <a class="nav-sub-link" href="#solutions" onclick="closeDockMenus()"><span class="material-symbols-outlined sub-icon">home</span>Résidentiel</a>
+          <a class="nav-sub-link" href="#solutions" onclick="closeDockMenus()"><span class="material-symbols-outlined sub-icon">storefront</span>Commercial</a>
+          <a class="nav-sub-link" href="#solutions" onclick="closeDockMenus()"><span class="material-symbols-outlined sub-icon">factory</span>Industriel</a>
+      </div>
+    </div>
+
+    <!-- Particuliers -->
+    <div class="dock-menu-item">
+      <a href="#particuliers" class="dock-item" data-section="particuliers" onclick="toggleDockMenu('dock-menu-particuliers', event)">
+        <span class="dock-icon material-symbols-outlined">home_work</span>
+        <span class="dock-label">Maison</span>
+      </a>
+      <div id="dock-menu-particuliers" class="dock-dropdown">
+          <a class="nav-sub-link" href="#particuliers" onclick="closeDockMenus()"><span class="material-symbols-outlined sub-icon">cottage</span>Maison</a>
+          <a class="nav-sub-link" href="#particuliers" onclick="closeDockMenus()"><span class="material-symbols-outlined sub-icon">apartment</span>Appartement</a>
+          <a class="nav-sub-link" href="#particuliers" onclick="closeDockMenus()"><span class="material-symbols-outlined sub-icon">construction</span>Rénovation</a>
+      </div>
+    </div>
+
+    <!-- Pro -->
+    <div class="dock-menu-item">
+      <a href="#professionnel" class="dock-item" data-section="professionnel" onclick="toggleDockMenu('dock-menu-pro', event)">
+        <span class="dock-icon material-symbols-outlined">domain</span>
+        <span class="dock-label">Pro</span>
+      </a>
+      <div id="dock-menu-pro" class="dock-dropdown">
+          <a class="nav-sub-link" href="#professionnel" onclick="closeDockMenus()"><span class="material-symbols-outlined sub-icon">business</span>Entreprises</a>
+          <a class="nav-sub-link" href="#professionnel" onclick="closeDockMenus()"><span class="material-symbols-outlined sub-icon">architecture</span>Architectes</a>
+          <a class="nav-sub-link" href="#professionnel" onclick="closeDockMenus()"><span class="material-symbols-outlined sub-icon">engineering</span>Artisans</a>
+      </div>
+    </div>
+
+    <!-- Agences -->
+    <div class="dock-menu-item">
+      <a href="#localisations" class="dock-item" data-section="localisations" onclick="toggleDockMenu('dock-menu-agences', event)">
+        <span class="dock-icon material-symbols-outlined">location_on</span>
+        <span class="dock-label">Agences</span>
+      </a>
+      <div id="dock-menu-agences" class="dock-dropdown">
+          <a class="nav-sub-link" href="#localisations" onclick="closeDockMenus()"><span class="material-symbols-outlined sub-icon">location_city</span>Lomé - Siège</a>
+          <a class="nav-sub-link" href="#localisations" onclick="closeDockMenus()"><span class="material-symbols-outlined sub-icon">pin_drop</span>Kara</a>
+          <a class="nav-sub-link" href="#localisations" onclick="closeDockMenus()"><span class="material-symbols-outlined sub-icon">map</span>Tout le Réseau</a>
+      </div>
+    </div>
+
   </div>
 </nav>
 
@@ -1711,6 +1839,44 @@
   });
   function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
   requestAnimationFrame(raf);
+
+  
+  // ── Mobile Dock Menus Logic ──
+  function toggleDockMenu(id, event) {
+      if(event) { event.preventDefault(); event.stopPropagation(); }
+      const allMenus = document.querySelectorAll('.dock-dropdown');
+      const target = document.getElementById(id);
+      const isActive = target && target.classList.contains('active');
+      
+      allMenus.forEach(m => m.classList.remove('active'));
+      
+      if(target && !isActive) {
+          target.classList.add('active');
+          
+          // Also set the parent dock item to active visually
+          document.querySelectorAll('.dock-item').forEach(i => i.classList.remove('active-menu'));
+          event.currentTarget.classList.add('active-menu');
+      } else {
+          document.querySelectorAll('.dock-item').forEach(i => i.classList.remove('active-menu'));
+      }
+  }
+
+  function closeDockMenus() {
+      document.querySelectorAll('.dock-dropdown').forEach(m => m.classList.remove('active'));
+      document.querySelectorAll('.dock-item').forEach(i => i.classList.remove('active-menu'));
+  }
+
+  // Close menus on outside click
+  document.addEventListener('click', (e) => {
+      if (!e.target.closest('.dock-menu-item')) {
+          closeDockMenus();
+      }
+  });
+
+  // Close menus on scroll
+  lenis.on('scroll', () => {
+      closeDockMenus();
+  });
 
   // ── Desktop Nav: morph on scroll ──
   const mainNav = document.getElementById('main-nav');
