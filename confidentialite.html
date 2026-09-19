@@ -270,47 +270,160 @@
         .brand-2 {
             animation: swapBrand2 8s ease-in-out infinite;
         }
+    
+        /* ── Desktop Nav Scroll Morphing ── */
+        #main-nav {
+            transition: background 0.4s ease, box-shadow 0.4s ease, height 0.4s ease, padding 0.4s ease;
+        }
+        #main-nav.scrolled {
+            background: rgba(255,255,255,0.85) !important;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            box-shadow: 0 4px 40px rgba(0,19,96,0.10);
+            height: 64px !important;
+        }
+        #main-nav .nav-inner {
+            transition: height 0.4s ease;
+            height: 96px;
+        }
+        #main-nav.scrolled .nav-inner {
+            height: 64px;
+        }
+        /* ── Active nav link pill ── */
+        .nav-link {
+            position: relative;
+            overflow: hidden;
+            padding: 6px 14px;
+            border-radius: 999px;
+            letter-spacing: 0.12em;
+            font-weight: 700;
+            font-size: 11px;
+            text-transform: uppercase;
+            color: #111c2d;
+            transition: color 0.25s;
+        }
+        .nav-link::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 999px;
+            background: #001360;
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.35s cubic-bezier(0.77,0,0.18,1);
+            z-index: -1;
+        }
+        .nav-link:hover::before, .nav-link.active::before {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+        .nav-link:hover, .nav-link.active {
+            color: #ffffff;
+        }
+        /* ── Mobile Dock ── */
+        #mobile-dock {
+            transition: transform 0.5s cubic-bezier(0.34,1.56,0.64,1);
+        }
+        #mobile-dock .dock-inner {
+            background: rgba(0,19,96,0.88);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid rgba(255,255,255,0.15);
+            border-top: 1px solid rgba(255,255,255,0.25);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.35), 0 0 0 1px rgba(255,255,255,0.05);
+        }
+        .dock-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 3px;
+            padding: 10px 4px 8px;
+            flex: 1;
+            color: rgba(255,255,255,0.55);
+            transition: color 0.2s, transform 0.2s cubic-bezier(0.34,1.56,0.64,1);
+            text-decoration: none;
+            position: relative;
+        }
+        .dock-item:active {
+            transform: scale(0.88);
+        }
+        .dock-item .dock-icon {
+            font-size: 22px;
+            line-height: 1;
+            transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1), color 0.2s;
+        }
+        .dock-item .dock-label {
+            font-size: 8px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            line-height: 1;
+            transition: color 0.2s;
+            white-space: nowrap;
+        }
+        .dock-item.active, .dock-item:hover {
+            color: #ffffff;
+        }
+        .dock-item.active .dock-icon, .dock-item:hover .dock-icon {
+            transform: translateY(-4px) scale(1.25);
+            color: #ffffff;
+        }
+        .dock-item::after {
+            content: '';
+            position: absolute;
+            bottom: 3px;
+            left: 50%;
+            transform: translateX(-50%) scaleX(0);
+            width: 20px;
+            height: 3px;
+            border-radius: 2px;
+            background: #bb0013;
+            transition: transform 0.25s cubic-bezier(0.34,1.56,0.64,1);
+        }
+        .dock-item.active::after, .dock-item:hover::after {
+            transform: translateX(-50%) scaleX(1);
+        }
+        /* Devis central button */
+        .dock-cta {
+            background: linear-gradient(135deg, #bb0013, #8b000d);
+            border-radius: 16px;
+            color: #fff !important;
+            margin: 0 4px;
+            box-shadow: 0 6px 20px rgba(187,0,19,0.4);
+            transition: transform 0.2s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.2s;
+        }
+        .dock-cta:hover {
+            transform: translateY(-6px) scale(1.05) !important;
+            box-shadow: 0 12px 30px rgba(187,0,19,0.5);
+        }
+        .dock-cta::after { display: none; }
+
     </style>
     <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.29/bundled/lenis.min.js"></script>
 </head>
 <body class="bg-surface text-on-background font-body-md antialiased overflow-x-hidden selection:bg-secondary/30 selection:text-primary">
 <!-- TopNavBar -->
-<nav class="fixed top-0 w-full z-50 bg-white border-b border-primary/10 shadow-sm transition-all duration-300 hidden lg:block"><div class="flex justify-between items-center w-full px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto h-24">
-<div class="flex items-center gap-4 lg:gap-6 shrink-0">
-<img alt="Ets Vitro MZ Logo" class="h-14 md:h-16 w-auto object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAK9d5C7E4LmkWPy3VZpXxzo7BmkPN8F97OqNPQ5GavikiAklgQtZOeej8VfDAgwYuJjSJalRZ_bswvornVf_L4RmUPKvPbGzIAZ4nYO_Igi3NYIpkXCsW1_nr3hTJq4md_rFQwL0Sn8Ij87ZhWB9vMclTwJTKFuV1OQl_b3M_S_Q9btmMX7a8r9gxOKfJiVlMsbbF02CQRUZyCjcu7oXACqEFARnPcZkZICRiqWz13h2jf3JOzyDFLIMhWe4X1MAoVeks"/>
-<span class="text-headline-md font-headline-md font-black text-on-surface tracking-tighter hidden lg:block uppercase relative w-[130px] h-[30px] flex items-center">
-<span class="absolute inset-0 flex items-center brand-1"><span class="text-[#002395]">Vitro</span> <span class="text-secondary">MZ</span></span>
-<span class="absolute inset-0 flex items-center brand-2"><span class="text-secondary">MZ</span> <span class="text-[#002395]">Vitro</span></span>
-</span>
-</div>
-<div class="hidden lg:flex items-center gap-6 xl:gap-8">
-<a class="hover:text-secondary transition-all duration-300 text-label-bold font-label-bold relative group uppercase tracking-widest text-on-surface text-xs whitespace-nowrap" href="index.html#a-propos">À Propos
-      <span class="absolute -bottom-2 right-0 w-0 h-0.5 bg-secondary transition-all duration-300 group-hover:w-full"></span>
-</a>
-<a class="hover:text-secondary transition-all duration-300 text-label-bold font-label-bold relative group uppercase tracking-widest text-on-surface text-xs" href="index.html#produits">Produits
-      <span class="absolute -bottom-2 right-0 w-0 h-0.5 bg-secondary transition-all duration-300 group-hover:w-full"></span>
-</a>
-<a class="hover:text-secondary transition-all duration-300 text-label-bold font-label-bold relative group uppercase tracking-widest text-on-surface text-xs" href="index.html#solutions">Solutions
-      <span class="absolute -bottom-2 right-0 w-0 h-0.5 bg-secondary transition-all duration-300 group-hover:w-full"></span>
-</a>
-<a class="hover:text-secondary transition-all duration-300 text-label-bold font-label-bold relative group uppercase tracking-widest text-on-surface text-xs" href="index.html#particuliers">Particuliers
-      <span class="absolute -bottom-2 right-0 w-0 h-0.5 bg-secondary transition-all duration-300 group-hover:w-full"></span>
-</a>
-<a class="hover:text-secondary transition-all duration-300 text-label-bold font-label-bold relative group uppercase tracking-widest text-on-surface text-xs" href="index.html#professionnel">Pro
-      <span class="absolute -bottom-2 right-0 w-0 h-0.5 bg-secondary transition-all duration-300 group-hover:w-full"></span>
-</a>
-<a class="hover:text-secondary transition-all duration-300 text-label-bold font-label-bold relative group uppercase tracking-widest text-on-surface text-xs" href="index.html#localisations">Agences
-      <span class="absolute -bottom-2 right-0 w-0 h-0.5 bg-secondary transition-all duration-300 group-hover:w-full"></span>
-</a></div>
-<div class="flex items-center gap-4 md:gap-6">
-    <a class="hidden md:inline-flex bg-primary text-white px-6 md:px-8 py-3 rounded-none text-label-bold font-label-bold hover:bg-secondary transition-all duration-300 shadow-[6px_6px_0_0_#bb0013] hover:shadow-[2px_2px_0_0_#bb0013] hover:translate-x-[4px] hover:translate-y-[4px] uppercase tracking-widest border border-primary whitespace-nowrap geo-clip-2 text-on-surface" href="index.html#devis">Obtenir un Devis</a>
-    
-    
-</div>
-</div>
-<!-- Mobile Menu Overlay -->
-<div id="mobile-menu" class="hidden"></div>
-</div>
+<nav id="main-nav" class="fixed top-0 w-full z-50 bg-white hidden lg:block">
+  <div class="nav-inner flex justify-between items-center w-full px-margin-desktop max-w-container-max mx-auto">
+    <a href="index.htmlindex.html" class="flex items-center gap-4 shrink-0 text-decoration-none">
+      <img alt="Ets Vitro MZ Logo" class="h-12 w-auto object-contain transition-all duration-300" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAK9d5C7E4LmkWPy3VZpXxzo7BmkPN8F97OqNPQ5GavikiAklgQtZOeej8VfDAgwYuJjSJalRZ_bswvornVf_L4RmUPKvPbGzIAZ4nYO_Igi3NYIpkXCsW1_nr3hTJq4md_rFQwL0Sn8Ij87ZhWB9vMclTwJTKFuV1OQl_b3M_S_Q9btmMX7a8r9gxOKfJiVlMsbbF02CQRUZyCjcu7oXACqEFARnPcZkZICRiqWz13h2jf3JOzyDFLIMhWe4X1MAoVeks"/>
+      <span class="font-headline-display font-black text-on-surface tracking-tighter hidden xl:block uppercase relative w-[130px] h-[28px]">
+        <span class="absolute inset-0 flex items-center brand-1"><span class="text-primary">Vitro</span>&nbsp;<span class="text-secondary">MZ</span></span>
+        <span class="absolute inset-0 flex items-center brand-2"><span class="text-secondary">MZ</span>&nbsp;<span class="text-primary">Vitro</span></span>
+      </span>
+    </a>
+    <div class="flex items-center gap-1">
+      <a class="nav-link" href="index.html#a-propos" data-section="a-propos">À Propos</a>
+<a class="nav-link" href="index.html#produits" data-section="produits">Produits</a>
+<a class="nav-link" href="index.html#solutions" data-section="solutions">Solutions</a>
+<a class="nav-link" href="index.html#particuliers" data-section="particuliers">Particuliers</a>
+<a class="nav-link" href="index.html#professionnel" data-section="professionnel">Pro</a>
+<a class="nav-link" href="index.html#localisations" data-section="localisations">Agences</a>
+    </div>
+    <a class="inline-flex items-center gap-2 bg-primary text-white px-6 py-3 text-xs font-black hover:bg-secondary transition-all duration-300 shadow-[5px_5px_0_0_#bb0013] hover:shadow-[2px_2px_0_0_#bb0013] hover:translate-x-[3px] hover:translate-y-[3px] uppercase tracking-widest geo-clip-2 whitespace-nowrap" href="index.html#devis">
+      <span class="material-symbols-outlined text-base">edit_document</span> Devis
+    </a>
+  </div>
 </nav>
 <section class="py-section-gap px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto relative pt-40 min-h-screen">
 <h1 class="text-[40px] md:text-[60px] font-headline-display text-primary font-black uppercase tracking-tighter leading-none mb-10 border-l-8 border-secondary pl-8">Politique de <br/>Confidentialité</h1>
@@ -384,79 +497,70 @@
 
 
 
+
+
+
 <!-- Mobile Dock (iOS Style) -->
-<nav id="mobile-dock" class="lg:hidden fixed bottom-6 left-1/2 -translate-x-1/2 z-[60] w-[90%] max-w-[400px] transition-transform duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)]">
-    <div class="glass-panel p-2 flex justify-between items-center rounded-full shadow-2xl bg-white/20 backdrop-blur-xl border border-white/30">
-        <a href="index.html#a-propos" class="flex flex-col items-center gap-1 p-2 md:p-3 flex-1 text-primary hover:text-secondary transition-colors relative group">
-            <span class="material-symbols-outlined text-[20px] md:text-2xl group-hover:scale-110 transition-transform">info</span>
-            <span class="text-[8px] md:text-[9px] font-label-bold uppercase tracking-widest font-black">À Propos</span>
-        </a>
-        <a href="index.html#produits" class="flex flex-col items-center gap-1 p-2 md:p-3 flex-1 text-primary hover:text-secondary transition-colors relative group">
-            <span class="material-symbols-outlined text-[20px] md:text-2xl group-hover:scale-110 transition-transform">grid_view</span>
-            <span class="text-[8px] md:text-[9px] font-label-bold uppercase tracking-widest font-black">Produits</span>
-        </a>
-        <a href="index.html#solutions" class="flex flex-col items-center gap-1 p-2 md:p-3 flex-1 text-primary hover:text-secondary transition-colors relative group">
-            <span class="material-symbols-outlined text-[20px] md:text-2xl group-hover:scale-110 transition-transform">architecture</span>
-            <span class="text-[8px] md:text-[9px] font-label-bold uppercase tracking-widest font-black">Solutions</span>
-        </a>
-        <a href="index.html#particuliers" class="flex flex-col items-center gap-1 p-2 md:p-3 flex-1 text-primary hover:text-secondary transition-colors relative group">
-            <span class="material-symbols-outlined text-[20px] md:text-2xl group-hover:scale-110 transition-transform">home_work</span>
-            <span class="text-[7px] md:text-[9px] font-label-bold uppercase tracking-widest font-black">Particuliers</span>
-        </a>
-        <a href="index.html#professionnel" class="flex flex-col items-center gap-1 p-2 md:p-3 flex-1 text-primary hover:text-secondary transition-colors relative group">
-            <span class="material-symbols-outlined text-[20px] md:text-2xl group-hover:scale-110 transition-transform">domain</span>
-            <span class="text-[8px] md:text-[9px] font-label-bold uppercase tracking-widest font-black">Pro</span>
-        </a>
-        <a href="index.html#localisations" class="flex flex-col items-center gap-1 p-2 md:p-3 flex-1 text-primary hover:text-secondary transition-colors relative group">
-            <span class="material-symbols-outlined text-[20px] md:text-2xl group-hover:scale-110 transition-transform">location_on</span>
-            <span class="text-[8px] md:text-[9px] font-label-bold uppercase tracking-widest font-black">Agences</span>
-        </a>
-    </div>
+<nav id="mobile-dock" class="lg:hidden fixed bottom-4 left-1/2 -translate-x-1/2 z-[60] w-[96%] max-w-[500px]">
+  <div class="dock-inner rounded-[24px] px-1 py-0.5 flex items-stretch">
+    <a href="index.html#a-propos" class="dock-item" data-section="a-propos"><span class="dock-icon material-symbols-outlined">info</span><span class="dock-label">À Propos</span></a>
+<a href="index.html#produits" class="dock-item" data-section="produits"><span class="dock-icon material-symbols-outlined">grid_view</span><span class="dock-label">Produits</span></a>
+<a href="index.html#solutions" class="dock-item" data-section="solutions"><span class="dock-icon material-symbols-outlined">architecture</span><span class="dock-label">Solutions</span></a>
+<a href="index.html#particuliers" class="dock-item" data-section="particuliers"><span class="dock-icon material-symbols-outlined">home_work</span><span class="dock-label">Particuliers</span></a>
+<a href="index.html#professionnel" class="dock-item" data-section="professionnel"><span class="dock-icon material-symbols-outlined">domain</span><span class="dock-label">Pro</span></a>
+<a href="index.html#localisations" class="dock-item" data-section="localisations"><span class="dock-icon material-symbols-outlined">location_on</span><span class="dock-label">Agences</span></a>
+  </div>
 </nav>
+
 <script>
-    // Initialize Lenis for Smooth Scrolling
-    const lenis = new Lenis({
-        duration: 1.2,
-        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // iOS like easing
-        direction: 'vertical',
-        gestureDirection: 'vertical',
-        smooth: true,
-        mouseMultiplier: 1,
-        smoothTouch: false,
-        touchMultiplier: 2,
-        infinite: false,
-    });
+  // ── Lenis Smooth Scroll ──
+  const lenis = new Lenis({
+    duration: 1.1,
+    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+    smooth: true,
+    smoothTouch: false,
+  });
+  function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
+  requestAnimationFrame(raf);
 
-    function raf(time) {
-        lenis.raf(time);
-        requestAnimationFrame(raf);
+  // ── Desktop Nav: morph on scroll ──
+  const mainNav = document.getElementById('main-nav');
+  let prevY = 0;
+  lenis.on('scroll', ({ scroll }) => {
+    if (mainNav) {
+      mainNav.classList.toggle('scrolled', scroll > 60);
     }
-    requestAnimationFrame(raf);
-    
-    // Sync ScrollTrigger with Lenis
-    if (typeof ScrollTrigger !== 'undefined') {
-        lenis.on('scroll', ScrollTrigger.update);
-        gsap.ticker.add((time) => {
-            lenis.raf(time * 1000);
-        });
-        gsap.ticker.lagSmoothing(0, 0);
+    // Mobile Dock: hide on scroll down, show on scroll up
+    const dock = document.getElementById('mobile-dock');
+    if (dock) {
+      if (scroll > prevY && scroll > 120) {
+        dock.style.transform = 'translateX(-50%) translateY(120%)';
+      } else {
+        dock.style.transform = 'translateX(-50%) translateY(0)';
+      }
     }
+    prevY = scroll;
+  });
 
-    // Hide/Show Mobile Dock on Scroll
-    let lastScrollY = window.scrollY;
-    const mobileDock = document.getElementById('mobile-dock');
-    if (mobileDock) {
-        lenis.on('scroll', (e) => {
-            const currentScrollY = window.scrollY;
-            if (currentScrollY > lastScrollY && currentScrollY > 100) {
-                // Scrolling down -> hide dock
-                mobileDock.style.transform = 'translate(-50%, 150%)';
-            } else {
-                // Scrolling up -> show dock
-                mobileDock.style.transform = 'translate(-50%, 0)';
-            }
-            lastScrollY = currentScrollY;
-        });
-    }
+  // ── Active Section Highlighting (both desktop + mobile) ──
+  const sections = ['a-propos','produits','solutions','particuliers','professionnel','localisations'];
+  const navLinks = document.querySelectorAll('.nav-link[data-section]');
+  const dockItems = document.querySelectorAll('.dock-item[data-section]');
+
+  function setActive(id) {
+    navLinks.forEach(l => l.classList.toggle('active', l.dataset.section === id));
+    dockItems.forEach(l => l.classList.toggle('active', l.dataset.section === id));
+  }
+
+  const observers = sections.map(id => {
+    const el = document.getElementById(id);
+    if (!el) return null;
+    const obs = new IntersectionObserver(([e]) => {
+      if (e.isIntersecting) setActive(id);
+    }, { threshold: 0.3 });
+    obs.observe(el);
+    return obs;
+  });
 </script>
+
 </body></html>
