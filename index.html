@@ -1581,73 +1581,44 @@
 <script>
     // Product Data
     const productData = {
-        'siege': {
-            title: 'Siège Social - Lomé',
-            images: [
-                'https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=1200&auto=format&fit=crop',
-                'https://images.unsplash.com/photo-1497215728101-856f4ea42174?q=80&w=1200&auto=format&fit=crop',
-                'https://images.unsplash.com/photo-1416949929422-a1d9c2020211?q=80&w=1200&auto=format&fit=crop'
-            ]
-        },
-        'showroom': {
-            title: 'Showroom VIP',
-            images: [
-                'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1200&auto=format&fit=crop',
-                'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=1200&auto=format&fit=crop',
-                'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?q=80&w=1200&auto=format&fit=crop'
-            ]
-        },
-        'depot': {
-            title: 'Dépôt Industriel',
-            images: [
-                'https://images.unsplash.com/photo-1504307651254-35680f356f58?q=80&w=1200&auto=format&fit=crop',
-                'https://images.unsplash.com/photo-1586528116311-ad8ed7c80a30?q=80&w=1200&auto=format&fit=crop',
-                'https://images.unsplash.com/photo-1587293852726-70cdb56c2866?q=80&w=1200&auto=format&fit=crop'
-            ]
-        },
-
         'vitres': {
             title: 'Vitres & Vitrages',
             images: [
-                'https://images.unsplash.com/photo-1541888081691-68fa64fa687b?q=80&w=1200&auto=format&fit=crop', // Glass building
-                'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1200&auto=format&fit=crop', // Interior glass
-                'https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=1200&auto=format&fit=crop'  // Office glass
+                'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1200&auto=format&fit=crop', // Modern villa glass (tropical vibe)
+                'https://images.unsplash.com/photo-1613977257363-707ba9348227?q=80&w=1200&auto=format&fit=crop', // Tropical modern interior with large windows
+                'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=1200&auto=format&fit=crop'  // Bright sunny mansion exterior with glass
             ]
         },
         'carreaux': {
             title: 'Carreaux & Revêtements',
             images: [
-                'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?q=80&w=1200&auto=format&fit=crop', // Tiles texture
-                'https://images.unsplash.com/photo-1600566752355-35792bedcfea?q=80&w=1200&auto=format&fit=crop', // Bathroom tiles
-                'https://images.unsplash.com/photo-1615873968403-89e068629265?q=80&w=1200&auto=format&fit=crop'  // Floor tiles
+                'https://images.unsplash.com/photo-1615874959474-d609969a9905?q=80&w=1200&auto=format&fit=crop', // Earthy warm tones, large tiles (popular in TG)
+                'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?q=80&w=1200&auto=format&fit=crop', // Bright polished porcelain tiles
+                'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?q=80&w=1200&auto=format&fit=crop'  // Textured exterior/wall tiles
             ]
         },
         'accessoires': {
             title: 'Accessoires & Profilés',
             images: [
-                'https://images.unsplash.com/photo-1585058178123-48866eb85c69?q=80&w=1200&auto=format&fit=crop', // Hardware
-                'https://images.unsplash.com/photo-1533090161767-e6ffed986c88?q=80&w=1200&auto=format&fit=crop'  // Metal profiles
+                'https://images.unsplash.com/photo-1585058178123-48866eb85c69?q=80&w=1200&auto=format&fit=crop', // Aluminum/metal profiles
+                'https://images.unsplash.com/photo-1599696848652-f0ff23bc911f?q=80&w=1200&auto=format&fit=crop', // Modern hardware, locks, handles
+                'https://images.unsplash.com/photo-1533090161767-e6ffed986c88?q=80&w=1200&auto=format&fit=crop'  // Construction fittings
             ]
         },
         'douche': {
             title: 'Solutions de Douche',
             images: [
-                'https://images.unsplash.com/photo-1620626011761-996317b8d101?q=80&w=1200&auto=format&fit=crop', // Modern shower
-                'https://images.unsplash.com/photo-1584622781564-1d987f7333c1?q=80&w=1200&auto=format&fit=crop'  // Bathroom glass
-            ]
-        },
-        'pro': {
-            title: 'Matériaux Professionnels',
-            images: [
-                'https://images.unsplash.com/photo-1504307651254-35680f356f58?q=80&w=1200&auto=format&fit=crop', // Construction site
-                'https://images.unsplash.com/photo-1536895058696-a69b1c7ba34e?q=80&w=1200&auto=format&fit=crop'  // Tools
+                'https://images.unsplash.com/photo-1620626011761-996317b8d101?q=80&w=1200&auto=format&fit=crop', // Modern glass shower cabin with warm lighting
+                'https://images.unsplash.com/photo-1584622781564-1d987f7333c1?q=80&w=1200&auto=format&fit=crop', // Walk-in shower with sleek glass partitions
+                'https://images.unsplash.com/photo-1600566752355-35792bedcfea?q=80&w=1200&auto=format&fit=crop'  // Bathroom aesthetic
             ]
         },
         'plomberie': {
             title: 'Plomberie & Sanitaire',
             images: [
-                'https://images.unsplash.com/photo-1585909695284-32d2985ac9c0?q=80&w=1200&auto=format&fit=crop', // Plumbing pipes
-                'https://images.unsplash.com/photo-1608303588026-884930af2559?q=80&w=1200&auto=format&fit=crop'  // Faucet
+                'https://images.unsplash.com/photo-1608303588026-884930af2559?q=80&w=1200&auto=format&fit=crop', // High quality modern faucet
+                'https://images.unsplash.com/photo-1585909695284-32d2985ac9c0?q=80&w=1200&auto=format&fit=crop', // PVC/Pipes installation realistic view
+                'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?q=80&w=1200&auto=format&fit=crop'  // Sanitary installation context
             ]
         }
     };
