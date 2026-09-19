@@ -600,10 +600,10 @@
     <!-- Nav Menu with Dropdowns -->
     <div class="flex items-center gap-0.5">
 
-      <!-- À Propos -->
+      <!-- L'Entreprise -->
       <div class="nav-menu-item">
         <a class="nav-link" href="#a-propos" data-section="a-propos">
-          À Propos
+          L'Entreprise
           <span class="material-symbols-outlined nav-chevron">expand_more</span>
         </a>
         <div class="nav-dropdown">
@@ -613,10 +613,10 @@
         </div>
       </div>
 
-      <!-- Produits -->
+      <!-- Nos Produits -->
       <div class="nav-menu-item">
         <a class="nav-link" href="#produits" data-section="produits">
-          Produits
+          Nos Produits
           <span class="material-symbols-outlined nav-chevron">expand_more</span>
         </a>
         <div class="nav-dropdown">
@@ -624,65 +624,38 @@
           <a class="nav-sub-link" href="#produits" onclick="openProductModal('carreaux')"><span class="material-symbols-outlined sub-icon">grid_view</span>Carreaux & Revêtements</a>
           <a class="nav-sub-link" href="#produits" onclick="openProductModal('accessoires')"><span class="material-symbols-outlined sub-icon">build</span>Accessoires & Profilés</a>
           <div class="nav-sub-divider"></div>
-          <a class="nav-sub-link" href="#produits" onclick="openProductModal('douche')"><span class="material-symbols-outlined sub-icon">shower</span>Solutions de Douche</a>
+          <a class="nav-sub-link" href="#produits" onclick="openProductModal('douche')"><span class="material-symbols-outlined sub-icon">shower</span>Solutions Douche</a>
           <a class="nav-sub-link" href="#produits" onclick="openProductModal('plomberie')"><span class="material-symbols-outlined sub-icon">plumbing</span>Plomberie & Sanitaire</a>
         </div>
       </div>
 
-      <!-- Solutions -->
+      <!-- Expertises -->
       <div class="nav-menu-item">
         <a class="nav-link" href="#solutions" data-section="solutions">
-          Solutions
+          Expertises
           <span class="material-symbols-outlined nav-chevron">expand_more</span>
         </a>
         <div class="nav-dropdown">
-          <a class="nav-sub-link" href="#solutions"><span class="material-symbols-outlined sub-icon">home</span>Résidentiel</a>
-          <a class="nav-sub-link" href="#solutions"><span class="material-symbols-outlined sub-icon">storefront</span>Commercial</a>
-          <a class="nav-sub-link" href="#solutions"><span class="material-symbols-outlined sub-icon">factory</span>Industriel</a>
+          <a class="nav-sub-link" href="#particuliers"><span class="material-symbols-outlined sub-icon">cottage</span>Espace Particuliers</a>
+          <a class="nav-sub-link" href="#professionnel"><span class="material-symbols-outlined sub-icon">business</span>Espace Professionnel</a>
+          <a class="nav-sub-link" href="#solutions"><span class="material-symbols-outlined sub-icon">architecture</span>Nos Réalisations</a>
         </div>
       </div>
 
-      <!-- Particuliers -->
-      <div class="nav-menu-item">
-        <a class="nav-link" href="#particuliers" data-section="particuliers">
-          Particuliers
-          <span class="material-symbols-outlined nav-chevron">expand_more</span>
-        </a>
-        <div class="nav-dropdown">
-          <a class="nav-sub-link" href="#particuliers"><span class="material-symbols-outlined sub-icon">cottage</span>Maison</a>
-          <a class="nav-sub-link" href="#particuliers"><span class="material-symbols-outlined sub-icon">apartment</span>Appartement</a>
-          <a class="nav-sub-link" href="#particuliers"><span class="material-symbols-outlined sub-icon">construction</span>Rénovation</a>
-        </div>
-      </div>
-
-      <!-- Pro -->
-      <div class="nav-menu-item">
-        <a class="nav-link" href="#professionnel" data-section="professionnel">
-          Pro
-          <span class="material-symbols-outlined nav-chevron">expand_more</span>
-        </a>
-        <div class="nav-dropdown">
-          <a class="nav-sub-link" href="#professionnel"><span class="material-symbols-outlined sub-icon">business</span>Entreprises</a>
-          <a class="nav-sub-link" href="#professionnel"><span class="material-symbols-outlined sub-icon">architecture</span>Architectes</a>
-          <a class="nav-sub-link" href="#professionnel"><span class="material-symbols-outlined sub-icon">engineering</span>Artisans</a>
-        </div>
-      </div>
-
-      <!-- Agences -->
+      <!-- Contact & Réseau -->
       <div class="nav-menu-item">
         <a class="nav-link" href="#localisations" data-section="localisations">
-          Agences
+          Contact & Réseau
           <span class="material-symbols-outlined nav-chevron">expand_more</span>
         </a>
         <div class="nav-dropdown">
-          <a class="nav-sub-link" href="#localisations"><span class="material-symbols-outlined sub-icon">location_city</span>Lomé - Siège</a>
-          <a class="nav-sub-link" href="#localisations"><span class="material-symbols-outlined sub-icon">pin_drop</span>Kara</a>
-          <a class="nav-sub-link" href="#localisations"><span class="material-symbols-outlined sub-icon">map</span>Tout le Réseau</a>
+          <a class="nav-sub-link" href="#localisations"><span class="material-symbols-outlined sub-icon">location_on</span>Nos Agences</a>
+          <a class="nav-sub-link" href="#devis"><span class="material-symbols-outlined sub-icon">edit_document</span>Demander un Devis</a>
+          <a class="nav-sub-link" href="https://wa.me/22890000000" target="_blank"><span class="material-symbols-outlined sub-icon">chat</span>Assistance WhatsApp</a>
         </div>
       </div>
 
     </div>
-
     <!-- CTA Glass Button -->
     <a class="inline-flex items-center gap-2.5 text-white px-7 py-3.5 text-xs font-black transition-all duration-300 uppercase tracking-widest whitespace-nowrap border border-white/20 hover:border-secondary bg-white/5 hover:bg-secondary/90 backdrop-blur-sm group relative overflow-hidden" href="#devis">
       <span class="absolute inset-0 bg-gradient-to-r from-secondary to-[#ff3333] transform scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-400 z-0"></span>
@@ -1745,11 +1718,11 @@
 <nav id="mobile-dock" class="lg:hidden fixed bottom-4 left-1/2 -translate-x-1/2 z-[60] w-[96%] max-w-[500px]">
   <div class="dock-inner rounded-[28px] px-2 py-1.5 flex items-stretch border-t border-white/20 bg-[#001360]/90 backdrop-blur-2xl">
     
-    <!-- À Propos -->
+    <!-- L'Entreprise -->
     <div class="dock-menu-item">
       <a href="#a-propos" class="dock-item" data-section="a-propos" onclick="toggleDockMenu('dock-menu-propos', event)">
         <span class="dock-icon material-symbols-outlined">info</span>
-        <span class="dock-label">À Propos</span>
+        <span class="dock-label">L'Entreprise</span>
       </a>
       <div id="dock-menu-propos" class="dock-dropdown">
           <a class="nav-sub-link" href="#a-propos" onclick="closeDockMenus()"><span class="material-symbols-outlined sub-icon">history</span>Notre Histoire</a>
@@ -1758,14 +1731,14 @@
       </div>
     </div>
 
-    <!-- Produits -->
+    <!-- Nos Produits -->
     <div class="dock-menu-item">
       <a href="#produits" class="dock-item" data-section="produits" onclick="toggleDockMenu('dock-menu-produits', event)">
         <span class="dock-icon material-symbols-outlined">grid_view</span>
         <span class="dock-label">Produits</span>
       </a>
       <div id="dock-menu-produits" class="dock-dropdown">
-          <a class="nav-sub-link" href="#produits" onclick="closeDockMenus(); openProductModal('vitres')"><span class="material-symbols-outlined sub-icon">window</span>Vitres & Vitrages</a>
+          <a class="nav-sub-link" href="#produits" onclick="closeDockMenus(); openProductModal('vitres')"><span class="material-symbols-outlined sub-icon">window</span>Vitres</a>
           <a class="nav-sub-link" href="#produits" onclick="closeDockMenus(); openProductModal('carreaux')"><span class="material-symbols-outlined sub-icon">grid_view</span>Carreaux</a>
           <a class="nav-sub-link" href="#produits" onclick="closeDockMenus(); openProductModal('accessoires')"><span class="material-symbols-outlined sub-icon">build</span>Accessoires</a>
           <div class="nav-sub-divider"></div>
@@ -1774,55 +1747,29 @@
       </div>
     </div>
 
-    <!-- Solutions -->
+    <!-- Expertises -->
     <div class="dock-menu-item">
-      <a href="#solutions" class="dock-item" data-section="solutions" onclick="toggleDockMenu('dock-menu-solutions', event)">
+      <a href="#solutions" class="dock-item" data-section="solutions" onclick="toggleDockMenu('dock-menu-expertises', event)">
         <span class="dock-icon material-symbols-outlined">architecture</span>
-        <span class="dock-label">Solutions</span>
+        <span class="dock-label">Expertises</span>
       </a>
-      <div id="dock-menu-solutions" class="dock-dropdown">
-          <a class="nav-sub-link" href="#solutions" onclick="closeDockMenus()"><span class="material-symbols-outlined sub-icon">home</span>Résidentiel</a>
-          <a class="nav-sub-link" href="#solutions" onclick="closeDockMenus()"><span class="material-symbols-outlined sub-icon">storefront</span>Commercial</a>
-          <a class="nav-sub-link" href="#solutions" onclick="closeDockMenus()"><span class="material-symbols-outlined sub-icon">factory</span>Industriel</a>
+      <div id="dock-menu-expertises" class="dock-dropdown">
+          <a class="nav-sub-link" href="#particuliers" onclick="closeDockMenus()"><span class="material-symbols-outlined sub-icon">cottage</span>Particuliers</a>
+          <a class="nav-sub-link" href="#professionnel" onclick="closeDockMenus()"><span class="material-symbols-outlined sub-icon">business</span>Professionnel</a>
+          <a class="nav-sub-link" href="#solutions" onclick="closeDockMenus()"><span class="material-symbols-outlined sub-icon">architecture</span>Réalisations</a>
       </div>
     </div>
 
-    <!-- Particuliers -->
+    <!-- Contact -->
     <div class="dock-menu-item">
-      <a href="#particuliers" class="dock-item" data-section="particuliers" onclick="toggleDockMenu('dock-menu-particuliers', event)">
-        <span class="dock-icon material-symbols-outlined">home_work</span>
-        <span class="dock-label">Maison</span>
+      <a href="#localisations" class="dock-item" data-section="localisations" onclick="toggleDockMenu('dock-menu-contact', event)">
+        <span class="dock-icon material-symbols-outlined">support_agent</span>
+        <span class="dock-label">Contact</span>
       </a>
-      <div id="dock-menu-particuliers" class="dock-dropdown">
-          <a class="nav-sub-link" href="#particuliers" onclick="closeDockMenus()"><span class="material-symbols-outlined sub-icon">cottage</span>Maison</a>
-          <a class="nav-sub-link" href="#particuliers" onclick="closeDockMenus()"><span class="material-symbols-outlined sub-icon">apartment</span>Appartement</a>
-          <a class="nav-sub-link" href="#particuliers" onclick="closeDockMenus()"><span class="material-symbols-outlined sub-icon">construction</span>Rénovation</a>
-      </div>
-    </div>
-
-    <!-- Pro -->
-    <div class="dock-menu-item">
-      <a href="#professionnel" class="dock-item" data-section="professionnel" onclick="toggleDockMenu('dock-menu-pro', event)">
-        <span class="dock-icon material-symbols-outlined">domain</span>
-        <span class="dock-label">Pro</span>
-      </a>
-      <div id="dock-menu-pro" class="dock-dropdown">
-          <a class="nav-sub-link" href="#professionnel" onclick="closeDockMenus()"><span class="material-symbols-outlined sub-icon">business</span>Entreprises</a>
-          <a class="nav-sub-link" href="#professionnel" onclick="closeDockMenus()"><span class="material-symbols-outlined sub-icon">architecture</span>Architectes</a>
-          <a class="nav-sub-link" href="#professionnel" onclick="closeDockMenus()"><span class="material-symbols-outlined sub-icon">engineering</span>Artisans</a>
-      </div>
-    </div>
-
-    <!-- Agences -->
-    <div class="dock-menu-item">
-      <a href="#localisations" class="dock-item" data-section="localisations" onclick="toggleDockMenu('dock-menu-agences', event)">
-        <span class="dock-icon material-symbols-outlined">location_on</span>
-        <span class="dock-label">Agences</span>
-      </a>
-      <div id="dock-menu-agences" class="dock-dropdown">
-          <a class="nav-sub-link" href="#localisations" onclick="closeDockMenus()"><span class="material-symbols-outlined sub-icon">location_city</span>Lomé - Siège</a>
-          <a class="nav-sub-link" href="#localisations" onclick="closeDockMenus()"><span class="material-symbols-outlined sub-icon">pin_drop</span>Kara</a>
-          <a class="nav-sub-link" href="#localisations" onclick="closeDockMenus()"><span class="material-symbols-outlined sub-icon">map</span>Tout le Réseau</a>
+      <div id="dock-menu-contact" class="dock-dropdown">
+          <a class="nav-sub-link" href="#localisations" onclick="closeDockMenus()"><span class="material-symbols-outlined sub-icon">location_on</span>Agences</a>
+          <a class="nav-sub-link" href="#devis" onclick="closeDockMenus()"><span class="material-symbols-outlined sub-icon">edit_document</span>Devis</a>
+          <a class="nav-sub-link" href="https://wa.me/22890000000" onclick="closeDockMenus()" target="_blank"><span class="material-symbols-outlined sub-icon">chat</span>WhatsApp</a>
       </div>
     </div>
 
@@ -1898,7 +1845,7 @@
   });
 
   // ── Active Section Highlighting (both desktop + mobile) ──
-  const sections = ['a-propos','produits','solutions','particuliers','professionnel','localisations'];
+  const sections = ['a-propos','produits','solutions','localisations'];
   const navLinks = document.querySelectorAll('.nav-link[data-section]');
   const dockItems = document.querySelectorAll('.dock-item[data-section]');
 
