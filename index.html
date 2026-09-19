@@ -396,6 +396,19 @@
         }
         .dock-cta::after { display: none; }
 
+    
+        /* ── Staggered Fall Base States ── */
+        .sf-item {
+            opacity: 0;
+            transform: translateY(-60px) scale(0.95);
+            will-change: transform, opacity;
+        }
+        /* Nav items start state */
+        .nav-link, .dock-item {
+            opacity: 0;
+            transform: translateY(-20px);
+        }
+
     </style>
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
@@ -442,12 +455,12 @@
 <!-- Huge background text -->
 <div class="absolute -top-24 -left-12 text-[25vw] md:text-[150px] lg:text-[200px] font-headline-display text-outline-white opacity-20 pointer-events-none select-none font-black tracking-tighter leading-none z-[-1] hidden md:block">VITRO</div>
 <div class="absolute -left-6 top-0 bottom-0 w-3 bg-secondary h-full my-auto transform -skew-y-12"></div>
-<div class="glass-panel-heavy p-6 md:p-16 border-l-4 border-l-secondary relative overflow-hidden">
+<div class="sf-item glass-panel-heavy p-6 md:p-16 border-l-4 border-l-secondary relative overflow-hidden">
 <!-- Inner geometric decorative line -->
 <div class="absolute top-0 right-10 w-px h-full bg-white/20 transform rotate-12"></div>
 <div class="space-y-6 relative z-10">
-<span class="text-label-bold text-secondary tracking-[0.4em] uppercase block font-bold">Bâtir Ensemble, Durablement</span>
-<h1 class="text-4xl md:text-6xl lg:text-[80px] font-headline-display text-white leading-[0.9] font-black uppercase tracking-tighter">
+<span id="hero-label" class="sf-item text-label-bold text-secondary tracking-[0.4em] uppercase block font-bold">Bâtir Ensemble, Durablement</span>
+<h1 class="sf-item text-4xl md:text-6xl lg:text-[80px] font-headline-display text-white leading-[0.9] font-black uppercase tracking-tighter">
                 L'Excellence <br/><span class="text-secondary/90 text-transparent bg-clip-text bg-gradient-to-r from-secondary to-[#ff5555]">Du Verre</span> <br/>et du Design
             </h1>
 <p class="text-body-lg font-body-lg text-white/80 max-w-2xl border-l-2 border-secondary/50 pl-6 py-2 font-light mt-8">
@@ -507,7 +520,7 @@
                     15<span class="text-[40px] text-secondary">+</span><br/>
 <span class="text-[30px] md:text-[40px] tracking-widest uppercase font-bold text-on-surface-variant">Années</span>
 </h2>
-<span class="text-label-bold text-secondary tracking-[0.3em] uppercase block font-bold mt-4">D'Engagement &amp; de Confiance</span>
+<span class="sf-item text-label-bold text-secondary tracking-[0.3em] uppercase block font-bold mt-4">D'Engagement &amp; de Confiance</span>
 </div>
 <div class="lg:col-span-7 bg-white p-6 md:p-16 shadow-2xl border-t-4 border-secondary geo-clip-3 relative">
 <div class="absolute top-0 right-10 w-px h-full bg-primary/10 transform rotate-12"></div>
@@ -522,8 +535,8 @@
 <!-- 02 - Nos Produits -->
 <section class="py-section-gap px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto relative bg-surface-container-low" id="produits">
 <div class="text-center mb-16 relative z-10">
-<span class="text-label-bold text-secondary tracking-[0.4em] uppercase block font-bold mb-4">Catalogue</span>
-<h2 class="text-4xl md:text-6xl lg:text-[80px] font-headline-display text-primary font-black uppercase tracking-tighter leading-none">Nos <br/>Produits</h2>
+<span class="sf-item text-label-bold text-secondary tracking-[0.4em] uppercase block font-bold mb-4">Catalogue</span>
+<h2 class="sf-item text-4xl md:text-6xl lg:text-[80px] font-headline-display text-primary font-black uppercase tracking-tighter leading-none">Nos <br/>Produits</h2>
 </div>
 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 relative z-10">
 <!-- Vitres -->
@@ -581,8 +594,8 @@
 <div class="absolute inset-0 opacity-5 pointer-events-none grid-bg"></div>
 <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-6 border-l-8 border-primary pl-8 relative z-10">
 <div class="max-w-2xl">
-<span class="text-label-bold text-primary tracking-[0.4em] uppercase block font-bold mb-2">Réalisations</span>
-<h2 class="text-4xl md:text-6xl lg:text-[80px] font-headline-display text-primary font-black uppercase tracking-tighter leading-none">Nos <br/>Solutions</h2>
+<span class="sf-item text-label-bold text-primary tracking-[0.4em] uppercase block font-bold mb-2">Réalisations</span>
+<h2 class="sf-item text-4xl md:text-6xl lg:text-[80px] font-headline-display text-primary font-black uppercase tracking-tighter leading-none">Nos <br/>Solutions</h2>
 <p class="text-body-lg text-on-surface-variant mt-6">Chaque espace que nous créons reflète nos valeurs communes : solidité, harmonie, durabilité.</p>
 </div>
 </div>
@@ -614,7 +627,7 @@
     <section class="py-section-gap px-margin-mobile md:px-margin-desktop bg-surface relative overflow-hidden" id="particuliers">
         <div class="max-w-container-max mx-auto relative z-10 flex flex-col md:flex-row-reverse items-center justify-between gap-12">
             <div class="max-w-2xl">
-                <span class="text-label-bold text-secondary tracking-[0.4em] uppercase block font-bold mb-4">Résidentiel</span>
+                <span class="sf-item text-label-bold text-secondary tracking-[0.4em] uppercase block font-bold mb-4">Résidentiel</span>
                 <h2 class="text-4xl md:text-6xl lg:text-[70px] font-headline-display text-primary font-black uppercase tracking-tighter leading-none mb-8">Espace <br>Particuliers</h2>
                 <p class="text-body-lg text-on-surface-variant font-light mb-10 border-l-4 border-secondary pl-6">
                     Votre foyer, c'est sacré. Rénovation ou construction, nous vous accompagnons avec le même soin que si c'était le nôtre. Conseils sincères, suivi humain.
@@ -652,7 +665,7 @@
 <div class="absolute top-0 right-0 w-[50%] h-full bg-secondary/20 transform skew-x-12 translate-x-20 z-0"></div>
 <div class="max-w-container-max mx-auto relative z-10 flex flex-col md:flex-row items-center justify-between gap-12">
 <div class="max-w-2xl">
-<span class="text-label-bold text-secondary tracking-[0.4em] uppercase block font-bold mb-4">B2B</span>
+<span class="sf-item text-label-bold text-secondary tracking-[0.4em] uppercase block font-bold mb-4">B2B</span>
 <h2 class="text-4xl md:text-6xl lg:text-[70px] font-headline-display text-white font-black uppercase tracking-tighter leading-none mb-8">Espace <br/>Professionnel</h2>
 <p class="text-body-lg text-white/80 font-light mb-10 border-l-4 border-secondary pl-6">
                     Artisans, techniciens, architectes et entreprises de construction  : la grandeur d'un projet se mesure à la solidité de ses partenariats. Tarifs justes, approvisionnement fiable, confiance mutuelle.
@@ -686,7 +699,7 @@
 <div class="relative z-10">
 <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-6 border-l-8 border-secondary pl-8">
 <div class="max-w-2xl">
-<span class="text-label-bold text-secondary tracking-[0.4em] uppercase block font-bold mb-2">Contenu Digital</span>
+<span class="sf-item text-label-bold text-secondary tracking-[0.4em] uppercase block font-bold mb-2">Contenu Digital</span>
 <h2 class="text-headline-lg-mobile md:text-headline-lg font-headline-display text-primary font-black uppercase tracking-tighter leading-tight">Vibrez avec nous <br/>sur TikTok</h2>
 <p class="text-body-md font-body-md text-on-surface-variant mt-4">
           Nos coulisses, notre passion, notre esprit collectif. En mouvement.
@@ -872,8 +885,8 @@
 <div class="px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto relative z-10 pt-10">
 <div class="flex flex-col md:flex-row justify-between items-end mb-24 gap-6 border-b border-white/20 pb-12">
 <div class="max-w-3xl space-y-4">
-<span class="text-label-bold text-secondary tracking-[0.4em] uppercase block font-bold">Réseau de Distribution</span>
-<h2 class="text-4xl md:text-6xl lg:text-[80px] font-headline-display text-white font-black uppercase tracking-tighter leading-[0.9]">Empreinte <br/>Géographique</h2>
+<span class="sf-item text-label-bold text-secondary tracking-[0.4em] uppercase block font-bold">Réseau de Distribution</span>
+<h2 class="sf-item text-4xl md:text-6xl lg:text-[80px] font-headline-display text-white font-black uppercase tracking-tighter leading-[0.9]">Empreinte <br/>Géographique</h2>
 </div>
 <a class="text-white text-label-bold font-label-bold flex items-center gap-3 hover:gap-6 transition-all group uppercase tracking-widest bg-white/10 backdrop-blur-sm px-8 py-5 border border-white/30 hover:bg-white hover:text-primary" href="#contact">
 <span class="">Ouvrir Cartographie</span> <span class="material-symbols-outlined group-hover:text-secondary" data-icon="map">map</span>
@@ -958,7 +971,7 @@
         <div class="max-w-container-max mx-auto relative z-10">
             <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
                 <div>
-                    <span class="text-label-bold text-secondary tracking-[0.4em] uppercase block font-bold mb-4">Réseau</span>
+                    <span class="sf-item text-label-bold text-secondary tracking-[0.4em] uppercase block font-bold mb-4">Réseau</span>
                     <h2 class="text-4xl md:text-6xl lg:text-[70px] font-headline-display text-primary font-black uppercase tracking-tighter leading-none">Nos <br/>Agences</h2>
                 </div>
                 <p class="text-body-lg text-on-surface-variant max-w-xl font-light border-l-4 border-secondary pl-6">
@@ -1044,7 +1057,7 @@
         <div class="max-w-container-max mx-auto relative z-10">
             <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
                 <div>
-                    <span class="text-label-bold text-secondary tracking-[0.4em] uppercase block font-bold mb-4">Réseau</span>
+                    <span class="sf-item text-label-bold text-secondary tracking-[0.4em] uppercase block font-bold mb-4">Réseau</span>
                     <h2 class="text-4xl md:text-6xl lg:text-[70px] font-headline-display text-primary font-black uppercase tracking-tighter leading-none">Nos <br/>Agences</h2>
                 </div>
                 <p class="text-body-lg text-on-surface-variant max-w-xl font-light border-l-4 border-secondary pl-6">
@@ -1130,11 +1143,11 @@
 <div class="absolute top-0 right-0 text-[25vw] md:text-[150px] lg:text-[200px] font-headline-display text-outline opacity-10 pointer-events-none select-none font-black tracking-tighter leading-none z-0 transform -rotate-6">CONTACT</div>
 <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 relative z-10">
 <!-- Devis Form -->
-<div class="bg-white shadow-2xl p-6 md:p-16 border-t-8 border-secondary relative overflow-hidden geo-clip-3">
+<div class="sf-item bg-white shadow-2xl p-6 md:p-16 border-t-8 border-secondary relative overflow-hidden geo-clip-3">
 <div class="absolute inset-0 opacity-5" style="background-image: linear-gradient(rgba(0,19,96,1) 1px, transparent 1px), linear-gradient(90deg, rgba(0,19,96,1) 1px, transparent 1px); background-size: 20px 20px;"></div>
 <div class="relative z-10">
-<span class="text-label-bold text-secondary tracking-[0.4em] uppercase block font-bold mb-4">Estimation</span>
-<h2 class="text-3xl md:text-5xl lg:text-[60px] font-headline-display text-primary font-black uppercase tracking-tighter leading-none mb-10">Obtenir <br/>Un Devis</h2>
+<span class="sf-item text-label-bold text-secondary tracking-[0.4em] uppercase block font-bold mb-4">Estimation</span>
+<h2 class="sf-item text-3xl md:text-5xl lg:text-[60px] font-headline-display text-primary font-black uppercase tracking-tighter leading-none mb-10">Obtenir <br/>Un Devis</h2>
 <form action="#" class="space-y-8" method="POST">
 <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
 <div class="relative">
@@ -1174,8 +1187,8 @@
 <!-- Contact & Cartographie -->
 <div class="flex flex-col h-full" id="contact">
 <div class="bg-surface p-6 md:p-12 mb-8 border-l-4 border-primary">
-<span class="text-label-bold text-primary tracking-[0.4em] uppercase block font-bold mb-4">Informations</span>
-<h3 class="text-[30px] font-headline-display text-primary font-black uppercase tracking-tighter leading-none mb-8">06 — Contact</h3>
+<span class="sf-item text-label-bold text-primary tracking-[0.4em] uppercase block font-bold mb-4">Informations</span>
+<h3 class="sf-item text-[30px] font-headline-display text-primary font-black uppercase tracking-tighter leading-none mb-8">06 — Contact</h3>
 <div class="space-y-6">
 <div class="flex items-start gap-4">
 <span class="material-symbols-outlined text-secondary text-2xl">location_on</span>
@@ -1535,6 +1548,99 @@
     obs.observe(el);
     return obs;
   });
+</script>
+
+
+<script>
+  gsap.registerPlugin(ScrollTrigger);
+
+  // ── Helper: stagger fall on scroll ──
+  function staggerFall(selector, trigger, options = {}) {
+    const els = document.querySelectorAll(selector);
+    if (!els.length) return;
+    gsap.fromTo(els,
+      { y: options.fromY ?? -70, opacity: 0, scale: options.scale ?? 0.95 },
+      {
+        y: 0,
+        opacity: 1,
+        scale: 1,
+        duration: options.duration ?? 0.8,
+        ease: options.ease ?? "back.out(1.7)",
+        stagger: options.stagger ?? 0.10,
+        scrollTrigger: {
+          trigger: trigger,
+          start: "top 82%",
+          once: true,
+        }
+      }
+    );
+  }
+
+  // ── 1. NAV: Desktop links drop in on page load ──
+  gsap.to('.nav-link', {
+    y: 0, opacity: 1,
+    duration: 0.6, ease: "back.out(2.0)",
+    stagger: 0.08,
+    delay: 0.3,
+  });
+
+  // ── 2. HERO: elements cascade down ──
+  gsap.fromTo(
+    '#hero-label, #hero-title, #hero-subtitle, #hero-ctas, #hero-badges',
+    { y: -80, opacity: 0, scale: 0.93 },
+    {
+      y: 0, opacity: 1, scale: 1,
+      duration: 0.9,
+      ease: "back.out(1.5)",
+      stagger: 0.13,
+      delay: 0.15,
+    }
+  );
+
+  // ── 3. MOBILE DOCK: items pop up from bottom ──
+  gsap.fromTo('.dock-item',
+    { y: 50, opacity: 0, scale: 0.7 },
+    {
+      y: 0, opacity: 1, scale: 1,
+      duration: 0.55,
+      ease: "back.out(2.2)",
+      stagger: 0.07,
+      delay: 0.6,
+    }
+  );
+
+  // ── 4. A PROPOS ──
+  staggerFall('#a-propos .sf-item', '#a-propos', { stagger: 0.12, fromY: -60 });
+
+  // ── 5. PRODUITS: cards stagger ──
+  staggerFall('#produits .sf-item', '#produits', { stagger: 0.09, fromY: -50, scale: 0.92 });
+
+  // ── 6. SOLUTIONS ──
+  staggerFall('#solutions .sf-item', '#solutions', { stagger: 0.11, fromY: -65 });
+
+  // ── 7. PARTICULIERS ──
+  staggerFall('#particuliers .sf-item', '#particuliers', { stagger: 0.12 });
+
+  // ── 8. PROFESSIONNEL ──
+  staggerFall('#professionnel .sf-item', '#professionnel', { stagger: 0.12 });
+
+  // ── 9. TIKTOK ──
+  staggerFall('#tiktok .sf-item', '#tiktok', { stagger: 0.14, fromY: -50 });
+
+  // ── 10. ACTIVITES ──
+  staggerFall('#activites .sf-item', '#activites', { stagger: 0.10 });
+
+  // ── 11. LOCALISATIONS ──
+  staggerFall('#localisations .sf-item', '#localisations', { stagger: 0.12 });
+
+  // ── 12. DEVIS / CONTACT ──
+  staggerFall('#devis .sf-item', '#devis', { stagger: 0.13 });
+  staggerFall('#contact .sf-item', '#contact', { stagger: 0.11 });
+
+  // ── ScrollTrigger refresh on Lenis tick ──
+  if (typeof lenis !== 'undefined') {
+    lenis.on('scroll', ScrollTrigger.update);
+  }
 </script>
 
 </body></html>

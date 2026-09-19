@@ -398,8 +398,23 @@
         }
         .dock-cta::after { display: none; }
 
+    
+        /* ── Staggered Fall Base States ── */
+        .sf-item {
+            opacity: 0;
+            transform: translateY(-60px) scale(0.95);
+            will-change: transform, opacity;
+        }
+        /* Nav items start state */
+        .nav-link, .dock-item {
+            opacity: 0;
+            transform: translateY(-20px);
+        }
+
     </style>
     <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.29/bundled/lenis.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 </head>
 <body class="bg-surface text-on-background font-body-md antialiased overflow-x-hidden selection:bg-secondary/30 selection:text-primary">
 <!-- TopNavBar -->
@@ -427,7 +442,7 @@
 </nav>
 <section class="py-section-gap px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto relative pt-40 min-h-screen">
 <h1 class="text-[50px] md:text-[80px] font-headline-display text-primary font-black uppercase tracking-tighter leading-none mb-10 border-l-8 border-secondary pl-8">Mentions <br/>Légales</h1>
-<div class="bg-white shadow-2xl p-10 border-t-4 border-secondary space-y-8 text-on-surface-variant font-body-md">
+<div class="sf-item bg-white shadow-2xl p-10 border-t-4 border-secondary space-y-8 text-on-surface-variant font-body-md">
 <div>
 <h2 class="text-headline-md text-primary font-bold mb-2">1. Éditeur du site</h2>
 <p>Ets Vitro MZ, société spécialisée dans la miroiterie et la vitrerie.</p>
@@ -563,6 +578,99 @@
     obs.observe(el);
     return obs;
   });
+</script>
+
+
+<script>
+  gsap.registerPlugin(ScrollTrigger);
+
+  // ── Helper: stagger fall on scroll ──
+  function staggerFall(selector, trigger, options = {}) {
+    const els = document.querySelectorAll(selector);
+    if (!els.length) return;
+    gsap.fromTo(els,
+      { y: options.fromY ?? -70, opacity: 0, scale: options.scale ?? 0.95 },
+      {
+        y: 0,
+        opacity: 1,
+        scale: 1,
+        duration: options.duration ?? 0.8,
+        ease: options.ease ?? "back.out(1.7)",
+        stagger: options.stagger ?? 0.10,
+        scrollTrigger: {
+          trigger: trigger,
+          start: "top 82%",
+          once: true,
+        }
+      }
+    );
+  }
+
+  // ── 1. NAV: Desktop links drop in on page load ──
+  gsap.to('.nav-link', {
+    y: 0, opacity: 1,
+    duration: 0.6, ease: "back.out(2.0)",
+    stagger: 0.08,
+    delay: 0.3,
+  });
+
+  // ── 2. HERO: elements cascade down ──
+  gsap.fromTo(
+    '#hero-label, #hero-title, #hero-subtitle, #hero-ctas, #hero-badges',
+    { y: -80, opacity: 0, scale: 0.93 },
+    {
+      y: 0, opacity: 1, scale: 1,
+      duration: 0.9,
+      ease: "back.out(1.5)",
+      stagger: 0.13,
+      delay: 0.15,
+    }
+  );
+
+  // ── 3. MOBILE DOCK: items pop up from bottom ──
+  gsap.fromTo('.dock-item',
+    { y: 50, opacity: 0, scale: 0.7 },
+    {
+      y: 0, opacity: 1, scale: 1,
+      duration: 0.55,
+      ease: "back.out(2.2)",
+      stagger: 0.07,
+      delay: 0.6,
+    }
+  );
+
+  // ── 4. A PROPOS ──
+  staggerFall('#a-propos .sf-item', '#a-propos', { stagger: 0.12, fromY: -60 });
+
+  // ── 5. PRODUITS: cards stagger ──
+  staggerFall('#produits .sf-item', '#produits', { stagger: 0.09, fromY: -50, scale: 0.92 });
+
+  // ── 6. SOLUTIONS ──
+  staggerFall('#solutions .sf-item', '#solutions', { stagger: 0.11, fromY: -65 });
+
+  // ── 7. PARTICULIERS ──
+  staggerFall('#particuliers .sf-item', '#particuliers', { stagger: 0.12 });
+
+  // ── 8. PROFESSIONNEL ──
+  staggerFall('#professionnel .sf-item', '#professionnel', { stagger: 0.12 });
+
+  // ── 9. TIKTOK ──
+  staggerFall('#tiktok .sf-item', '#tiktok', { stagger: 0.14, fromY: -50 });
+
+  // ── 10. ACTIVITES ──
+  staggerFall('#activites .sf-item', '#activites', { stagger: 0.10 });
+
+  // ── 11. LOCALISATIONS ──
+  staggerFall('#localisations .sf-item', '#localisations', { stagger: 0.12 });
+
+  // ── 12. DEVIS / CONTACT ──
+  staggerFall('#devis .sf-item', '#devis', { stagger: 0.13 });
+  staggerFall('#contact .sf-item', '#contact', { stagger: 0.11 });
+
+  // ── ScrollTrigger refresh on Lenis tick ──
+  if (typeof lenis !== 'undefined') {
+    lenis.on('scroll', ScrollTrigger.update);
+  }
 </script>
 
 </body></html>
