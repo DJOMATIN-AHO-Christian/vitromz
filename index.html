@@ -269,54 +269,172 @@
             animation: swapBrand2 8s ease-in-out infinite;
         }
     
-        /* ── Desktop Nav Scroll Morphing ── */
+        /* ── Desktop Nav - Glass Vitre Style ── */
         #main-nav {
-            transition: background 0.4s ease, box-shadow 0.4s ease, height 0.4s ease, padding 0.4s ease;
+            transition: all 0.5s cubic-bezier(0.22,1,0.36,1);
+            background: rgba(0,19,96,0.92);
+            backdrop-filter: blur(28px) saturate(1.6);
+            -webkit-backdrop-filter: blur(28px) saturate(1.6);
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+        #main-nav::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3) 30%, rgba(187,0,19,0.5) 50%, rgba(255,255,255,0.3) 70%, transparent);
+        }
+        #main-nav::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(255,255,255,0.06) 0%, transparent 40%, transparent 60%, rgba(255,255,255,0.03) 100%);
+            pointer-events: none;
         }
         #main-nav.scrolled {
-            background: rgba(255,255,255,0.85) !important;
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            box-shadow: 0 4px 40px rgba(0,19,96,0.10);
-            height: 64px !important;
+            background: rgba(0,19,96,0.96) !important;
+            box-shadow: 0 8px 40px rgba(0,0,0,0.25), 0 0 0 1px rgba(255,255,255,0.05);
         }
         #main-nav .nav-inner {
-            transition: height 0.4s ease;
-            height: 96px;
+            transition: height 0.4s cubic-bezier(0.22,1,0.36,1);
+            height: 80px;
+            position: relative;
+            z-index: 2;
         }
         #main-nav.scrolled .nav-inner {
-            height: 64px;
+            height: 60px;
         }
-        /* ── Active nav link pill ── */
+
+        /* ── Nav Menu Item (main category) ── */
+        .nav-menu-item {
+            position: relative;
+            padding: 0;
+        }
         .nav-link {
             position: relative;
-            overflow: hidden;
-            padding: 6px 14px;
-            border-radius: 999px;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            padding: 8px 16px;
             letter-spacing: 0.12em;
             font-weight: 700;
             font-size: 11px;
             text-transform: uppercase;
-            color: #111c2d;
-            transition: color 0.25s;
+            color: rgba(255,255,255,0.7);
+            transition: color 0.3s, background 0.3s;
+            text-decoration: none;
+            border: 1px solid transparent;
         }
-        .nav-link::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            border-radius: 999px;
-            background: #001360;
-            transform: scaleX(0);
-            transform-origin: right;
-            transition: transform 0.35s cubic-bezier(0.77,0,0.18,1);
-            z-index: -1;
+        .nav-link .nav-chevron {
+            font-size: 16px;
+            transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1);
+            opacity: 0.5;
         }
-        .nav-link:hover::before, .nav-link.active::before {
-            transform: scaleX(1);
-            transform-origin: left;
+        .nav-menu-item:hover .nav-chevron {
+            transform: rotate(180deg);
+            opacity: 1;
         }
         .nav-link:hover, .nav-link.active {
             color: #ffffff;
+            background: rgba(255,255,255,0.08);
+            border-color: rgba(255,255,255,0.1);
+        }
+        .nav-link.active {
+            border-bottom: 2px solid #bb0013;
+        }
+
+        /* ── Dropdown Panel (Vitre/Glass Style) ── */
+        .nav-dropdown {
+            position: absolute;
+            top: calc(100% + 8px);
+            left: 50%;
+            transform: translateX(-50%) translateY(-8px);
+            min-width: 240px;
+            background: rgba(0,19,96,0.95);
+            backdrop-filter: blur(30px) saturate(1.8);
+            -webkit-backdrop-filter: blur(30px) saturate(1.8);
+            border: 1px solid rgba(255,255,255,0.12);
+            border-top: 2px solid #bb0013;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.4), 0 0 0 1px rgba(255,255,255,0.05), inset 0 1px 0 rgba(255,255,255,0.08);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.35s cubic-bezier(0.22,1,0.36,1);
+            pointer-events: none;
+            z-index: 100;
+            padding: 8px 0;
+        }
+        .nav-dropdown::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(160deg, rgba(255,255,255,0.06) 0%, transparent 50%);
+            pointer-events: none;
+        }
+        /* Invisible bridge between link and dropdown */
+        .nav-menu-item::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            right: 0;
+            height: 12px;
+            background: transparent;
+        }
+        .nav-menu-item:hover .nav-dropdown {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(-50%) translateY(0);
+            pointer-events: auto;
+        }
+
+        /* ── Dropdown Link ── */
+        .nav-sub-link {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 20px;
+            color: rgba(255,255,255,0.65);
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            text-decoration: none;
+            transition: all 0.25s;
+            position: relative;
+            overflow: hidden;
+        }
+        .nav-sub-link::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: #bb0013;
+            transform: scaleY(0);
+            transition: transform 0.25s cubic-bezier(0.34,1.56,0.64,1);
+        }
+        .nav-sub-link:hover {
+            color: #ffffff;
+            background: rgba(255,255,255,0.06);
+            padding-left: 26px;
+        }
+        .nav-sub-link:hover::before {
+            transform: scaleY(1);
+        }
+        .nav-sub-link .sub-icon {
+            font-size: 18px;
+            opacity: 0.5;
+            transition: opacity 0.2s, color 0.2s;
+        }
+        .nav-sub-link:hover .sub-icon {
+            opacity: 1;
+            color: #bb0013;
+        }
+        .nav-sub-divider {
+            height: 1px;
+            background: rgba(255,255,255,0.08);
+            margin: 6px 16px;
         }
         /* ── Mobile Dock ── */
         #mobile-dock {
@@ -415,26 +533,109 @@
     <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.29/bundled/lenis.min.js"></script>
 </head>
 <body class="bg-surface text-on-background font-body-md antialiased overflow-x-hidden selection:bg-secondary/30 selection:text-primary">
-<!-- TopNavBar -->
-<nav id="main-nav" class="fixed top-0 w-full z-50 bg-white hidden lg:block">
+<!-- TopNavBar - Glass Vitre Style -->
+<nav id="main-nav" class="fixed top-0 w-full z-50 hidden lg:block">
   <div class="nav-inner flex justify-between items-center w-full px-margin-desktop max-w-container-max mx-auto">
+    <!-- Logo -->
     <a href="index.html" class="flex items-center gap-4 shrink-0 text-decoration-none">
-      <img alt="Ets Vitro MZ Logo" class="h-12 w-auto object-contain transition-all duration-300" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAK9d5C7E4LmkWPy3VZpXxzo7BmkPN8F97OqNPQ5GavikiAklgQtZOeej8VfDAgwYuJjSJalRZ_bswvornVf_L4RmUPKvPbGzIAZ4nYO_Igi3NYIpkXCsW1_nr3hTJq4md_rFQwL0Sn8Ij87ZhWB9vMclTwJTKFuV1OQl_b3M_S_Q9btmMX7a8r9gxOKfJiVlMsbbF02CQRUZyCjcu7oXACqEFARnPcZkZICRiqWz13h2jf3JOzyDFLIMhWe4X1MAoVeks"/>
-      <span class="font-headline-display font-black text-on-surface tracking-tighter hidden xl:block uppercase relative w-[130px] h-[28px]">
-        <span class="absolute inset-0 flex items-center brand-1"><span class="text-primary">Vitro</span>&nbsp;<span class="text-secondary">MZ</span></span>
-        <span class="absolute inset-0 flex items-center brand-2"><span class="text-secondary">MZ</span>&nbsp;<span class="text-primary">Vitro</span></span>
+      <img alt="Ets Vitro MZ Logo" class="h-12 w-auto object-contain transition-all duration-300 brightness-0 invert" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAK9d5C7E4LmkWPy3VZpXxzo7BmkPN8F97OqNPQ5GavikiAklgQtZOeej8VfDAgwYuJjSJalRZ_bswvornVf_L4RmUPKvPbGzIAZ4nYO_Igi3NYIpkXCsW1_nr3hTJq4md_rFQwL0Sn8Ij87ZhWB9vMclTwJTKFuV1OQl_b3M_S_Q9btmMX7a8r9gxOKfJiVlMsbbF02CQRUZyCjcu7oXACqEFARnPcZkZICRiqWz13h2jf3JOzyDFLIMhWe4X1MAoVeks"/>
+      <span class="font-headline-display font-black tracking-tighter hidden xl:block uppercase relative w-[130px] h-[28px]">
+        <span class="absolute inset-0 flex items-center brand-1"><span class="text-white">Vitro</span>&nbsp;<span class="text-secondary">MZ</span></span>
+        <span class="absolute inset-0 flex items-center brand-2"><span class="text-secondary">MZ</span>&nbsp;<span class="text-white">Vitro</span></span>
       </span>
     </a>
-    <div class="flex items-center gap-1">
-      <a class="nav-link" href="#a-propos" data-section="a-propos">À Propos</a>
-<a class="nav-link" href="#produits" data-section="produits">Produits</a>
-<a class="nav-link" href="#solutions" data-section="solutions">Solutions</a>
-<a class="nav-link" href="#particuliers" data-section="particuliers">Particuliers</a>
-<a class="nav-link" href="#professionnel" data-section="professionnel">Pro</a>
-<a class="nav-link" href="#localisations" data-section="localisations">Agences</a>
+
+    <!-- Nav Menu with Dropdowns -->
+    <div class="flex items-center gap-0.5">
+
+      <!-- À Propos -->
+      <div class="nav-menu-item">
+        <a class="nav-link" href="#a-propos" data-section="a-propos">
+          À Propos
+          <span class="material-symbols-outlined nav-chevron">expand_more</span>
+        </a>
+        <div class="nav-dropdown">
+          <a class="nav-sub-link" href="#a-propos"><span class="material-symbols-outlined sub-icon">history</span>Notre Histoire</a>
+          <a class="nav-sub-link" href="#a-propos"><span class="material-symbols-outlined sub-icon">visibility</span>Notre Vision</a>
+          <a class="nav-sub-link" href="#a-propos"><span class="material-symbols-outlined sub-icon">diamond</span>Nos Valeurs</a>
+        </div>
+      </div>
+
+      <!-- Produits -->
+      <div class="nav-menu-item">
+        <a class="nav-link" href="#produits" data-section="produits">
+          Produits
+          <span class="material-symbols-outlined nav-chevron">expand_more</span>
+        </a>
+        <div class="nav-dropdown">
+          <a class="nav-sub-link" href="#produits" onclick="openProductModal('vitres')"><span class="material-symbols-outlined sub-icon">window</span>Vitres & Vitrages</a>
+          <a class="nav-sub-link" href="#produits" onclick="openProductModal('carreaux')"><span class="material-symbols-outlined sub-icon">grid_view</span>Carreaux & Revêtements</a>
+          <a class="nav-sub-link" href="#produits" onclick="openProductModal('accessoires')"><span class="material-symbols-outlined sub-icon">build</span>Accessoires & Profilés</a>
+          <div class="nav-sub-divider"></div>
+          <a class="nav-sub-link" href="#produits" onclick="openProductModal('douche')"><span class="material-symbols-outlined sub-icon">shower</span>Solutions de Douche</a>
+          <a class="nav-sub-link" href="#produits" onclick="openProductModal('plomberie')"><span class="material-symbols-outlined sub-icon">plumbing</span>Plomberie & Sanitaire</a>
+        </div>
+      </div>
+
+      <!-- Solutions -->
+      <div class="nav-menu-item">
+        <a class="nav-link" href="#solutions" data-section="solutions">
+          Solutions
+          <span class="material-symbols-outlined nav-chevron">expand_more</span>
+        </a>
+        <div class="nav-dropdown">
+          <a class="nav-sub-link" href="#solutions"><span class="material-symbols-outlined sub-icon">home</span>Résidentiel</a>
+          <a class="nav-sub-link" href="#solutions"><span class="material-symbols-outlined sub-icon">storefront</span>Commercial</a>
+          <a class="nav-sub-link" href="#solutions"><span class="material-symbols-outlined sub-icon">factory</span>Industriel</a>
+        </div>
+      </div>
+
+      <!-- Particuliers -->
+      <div class="nav-menu-item">
+        <a class="nav-link" href="#particuliers" data-section="particuliers">
+          Particuliers
+          <span class="material-symbols-outlined nav-chevron">expand_more</span>
+        </a>
+        <div class="nav-dropdown">
+          <a class="nav-sub-link" href="#particuliers"><span class="material-symbols-outlined sub-icon">cottage</span>Maison</a>
+          <a class="nav-sub-link" href="#particuliers"><span class="material-symbols-outlined sub-icon">apartment</span>Appartement</a>
+          <a class="nav-sub-link" href="#particuliers"><span class="material-symbols-outlined sub-icon">construction</span>Rénovation</a>
+        </div>
+      </div>
+
+      <!-- Pro -->
+      <div class="nav-menu-item">
+        <a class="nav-link" href="#professionnel" data-section="professionnel">
+          Pro
+          <span class="material-symbols-outlined nav-chevron">expand_more</span>
+        </a>
+        <div class="nav-dropdown">
+          <a class="nav-sub-link" href="#professionnel"><span class="material-symbols-outlined sub-icon">business</span>Entreprises</a>
+          <a class="nav-sub-link" href="#professionnel"><span class="material-symbols-outlined sub-icon">architecture</span>Architectes</a>
+          <a class="nav-sub-link" href="#professionnel"><span class="material-symbols-outlined sub-icon">engineering</span>Artisans</a>
+        </div>
+      </div>
+
+      <!-- Agences -->
+      <div class="nav-menu-item">
+        <a class="nav-link" href="#localisations" data-section="localisations">
+          Agences
+          <span class="material-symbols-outlined nav-chevron">expand_more</span>
+        </a>
+        <div class="nav-dropdown">
+          <a class="nav-sub-link" href="#localisations"><span class="material-symbols-outlined sub-icon">location_city</span>Lomé - Siège</a>
+          <a class="nav-sub-link" href="#localisations"><span class="material-symbols-outlined sub-icon">pin_drop</span>Kara</a>
+          <a class="nav-sub-link" href="#localisations"><span class="material-symbols-outlined sub-icon">map</span>Tout le Réseau</a>
+        </div>
+      </div>
+
     </div>
-    <a class="inline-flex items-center gap-2 bg-primary text-white px-6 py-3 text-xs font-black hover:bg-secondary transition-all duration-300 shadow-[5px_5px_0_0_#bb0013] hover:shadow-[2px_2px_0_0_#bb0013] hover:translate-x-[3px] hover:translate-y-[3px] uppercase tracking-widest geo-clip-2 whitespace-nowrap" href="#devis">
-      <span class="material-symbols-outlined text-base">edit_document</span> Devis
+
+    <!-- CTA Glass Button -->
+    <a class="inline-flex items-center gap-2.5 text-white px-7 py-3.5 text-xs font-black transition-all duration-300 uppercase tracking-widest whitespace-nowrap border border-white/20 hover:border-secondary bg-white/5 hover:bg-secondary/90 backdrop-blur-sm group relative overflow-hidden" href="#devis">
+      <span class="absolute inset-0 bg-gradient-to-r from-secondary to-[#ff3333] transform scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-400 z-0"></span>
+      <span class="material-symbols-outlined text-base relative z-10">edit_document</span>
+      <span class="relative z-10">Demander un Devis</span>
     </a>
   </div>
 </nav>
