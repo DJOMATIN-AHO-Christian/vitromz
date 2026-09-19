@@ -764,55 +764,86 @@
 <span class="sf-item text-label-bold text-secondary tracking-[0.4em] uppercase block font-bold mb-4">Catalogue</span>
 <h2 class="sf-item text-4xl md:text-6xl lg:text-[80px] font-headline-display text-primary font-black uppercase tracking-tighter leading-none">Nos <br/>Produits</h2>
 </div>
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 relative z-10">
-<!-- Vitres -->
-<div class="bg-white border border-primary/10 p-6 md:p-8 shadow-lg hover:-translate-y-2 transition-transform duration-300 group cursor-pointer" onclick="openProductModal('vitres')">
-<div class="w-16 h-16 bg-primary/5 text-primary flex items-center justify-center mb-6 group-hover:bg-secondary group-hover:text-white transition-colors duration-300">
-<span class="material-symbols-outlined text-3xl">view_in_ar</span>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-0 relative z-10">
+
+<!-- Vitres & Vitrages -->
+<div class="group cursor-pointer relative overflow-hidden h-72 md:h-80 sf-item" onclick="openProductModal('vitres')">
+  <div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110" style="background-image: url('https://images.unsplash.com/photo-1613977257363-707ba9348227?q=80&w=900&auto=format&fit=crop')"></div>
+  <div class="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/40 to-transparent"></div>
+  <div class="absolute inset-0 bg-secondary/0 group-hover:bg-secondary/20 transition-colors duration-500"></div>
+  <div class="absolute bottom-0 left-0 right-0 p-6 flex flex-col justify-end">
+    <span class="material-symbols-outlined text-secondary text-2xl mb-2 group-hover:scale-110 transition-transform">window</span>
+    <h3 class="text-xl font-headline-display text-white font-black uppercase tracking-tight mb-1">Vitres & Vitrages</h3>
+    <p class="text-white/70 text-sm leading-snug">Verre trempé, feuilleté, clair ou teinté sur mesure.</p>
+    <span class="mt-3 inline-flex items-center gap-2 text-secondary text-xs font-bold uppercase tracking-widest group-hover:gap-4 transition-all">Voir le catalogue <span class="material-symbols-outlined text-base">arrow_forward</span></span>
+  </div>
 </div>
-<h3 class="text-headline-md font-bold text-primary uppercase tracking-tight mb-4">Vitres</h3>
-<p class="text-body-md text-on-surface-variant">Verre trempé, feuilleté, clair ou teinté. Des solutions sur mesure pour toutes vos surfaces vitrées et façades.</p>
+
+<!-- Carreaux & Revêtements -->
+<div class="group cursor-pointer relative overflow-hidden h-72 md:h-80 sf-item" onclick="openProductModal('carreaux')">
+  <div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110" style="background-image: url('https://images.unsplash.com/photo-1615874959474-d609969a9905?q=80&w=900&auto=format&fit=crop')"></div>
+  <div class="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/40 to-transparent"></div>
+  <div class="absolute inset-0 bg-secondary/0 group-hover:bg-secondary/20 transition-colors duration-500"></div>
+  <div class="absolute bottom-0 left-0 right-0 p-6 flex flex-col justify-end">
+    <span class="material-symbols-outlined text-secondary text-2xl mb-2 group-hover:scale-110 transition-transform">grid_view</span>
+    <h3 class="text-xl font-headline-display text-white font-black uppercase tracking-tight mb-1">Carreaux & Revêtements</h3>
+    <p class="text-white/70 text-sm leading-snug">Grès cérame, faïence, grands formats brillants ou mats.</p>
+    <span class="mt-3 inline-flex items-center gap-2 text-secondary text-xs font-bold uppercase tracking-widest group-hover:gap-4 transition-all">Voir le catalogue <span class="material-symbols-outlined text-base">arrow_forward</span></span>
+  </div>
 </div>
-<!-- Carreaux -->
-<div class="bg-white border border-primary/10 p-6 md:p-8 shadow-lg hover:-translate-y-2 transition-transform duration-300 group cursor-pointer" onclick="openProductModal('carreaux')">
-<div class="w-16 h-16 bg-primary/5 text-primary flex items-center justify-center mb-6 group-hover:bg-secondary group-hover:text-white transition-colors duration-300">
-<span class="material-symbols-outlined text-3xl">grid_view</span>
+
+<!-- Accessoires & Profilés -->
+<div class="group cursor-pointer relative overflow-hidden h-72 md:h-80 sf-item" onclick="openProductModal('accessoires')">
+  <div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110" style="background-image: url('https://images.unsplash.com/photo-1585058178123-48866eb85c69?q=80&w=900&auto=format&fit=crop')"></div>
+  <div class="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/40 to-transparent"></div>
+  <div class="absolute inset-0 bg-secondary/0 group-hover:bg-secondary/20 transition-colors duration-500"></div>
+  <div class="absolute bottom-0 left-0 right-0 p-6 flex flex-col justify-end">
+    <span class="material-symbols-outlined text-secondary text-2xl mb-2 group-hover:scale-110 transition-transform">build</span>
+    <h3 class="text-xl font-headline-display text-white font-black uppercase tracking-tight mb-1">Accessoires & Profilés</h3>
+    <p class="text-white/70 text-sm leading-snug">Profilés aluminium, quincaillerie et fixations de précision.</p>
+    <span class="mt-3 inline-flex items-center gap-2 text-secondary text-xs font-bold uppercase tracking-widest group-hover:gap-4 transition-all">Voir le catalogue <span class="material-symbols-outlined text-base">arrow_forward</span></span>
+  </div>
 </div>
-<h3 class="text-headline-md font-bold text-primary uppercase tracking-tight mb-4">Carreaux</h3>
-<p class="text-body-md text-on-surface-variant">Un vaste choix de carrelages sol et mur, grès cérame, faïence, pour des finitions élégantes et durables.</p>
+
+<!-- Solutions Douche -->
+<div class="group cursor-pointer relative overflow-hidden h-72 md:h-80 sf-item" onclick="openProductModal('douche')">
+  <div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110" style="background-image: url('https://images.unsplash.com/photo-1620626011761-996317b8d101?q=80&w=900&auto=format&fit=crop')"></div>
+  <div class="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/40 to-transparent"></div>
+  <div class="absolute inset-0 bg-secondary/0 group-hover:bg-secondary/20 transition-colors duration-500"></div>
+  <div class="absolute bottom-0 left-0 right-0 p-6 flex flex-col justify-end">
+    <span class="material-symbols-outlined text-secondary text-2xl mb-2 group-hover:scale-110 transition-transform">shower</span>
+    <h3 class="text-xl font-headline-display text-white font-black uppercase tracking-tight mb-1">Solutions Douche</h3>
+    <p class="text-white/70 text-sm leading-snug">Cabines en verre, parois italiennes et douches à l'italienne.</p>
+    <span class="mt-3 inline-flex items-center gap-2 text-secondary text-xs font-bold uppercase tracking-widest group-hover:gap-4 transition-all">Voir le catalogue <span class="material-symbols-outlined text-base">arrow_forward</span></span>
+  </div>
 </div>
-<!-- Accessoires -->
-<div class="bg-white border border-primary/10 p-6 md:p-8 shadow-lg hover:-translate-y-2 transition-transform duration-300 group cursor-pointer" onclick="openProductModal('accessoires')">
-<div class="w-16 h-16 bg-primary/5 text-primary flex items-center justify-center mb-6 group-hover:bg-secondary group-hover:text-white transition-colors duration-300">
-<span class="material-symbols-outlined text-3xl">hardware</span>
-</div>
-<h3 class="text-headline-md font-bold text-primary uppercase tracking-tight mb-4">Accessoires</h3>
-<p class="text-body-md text-on-surface-variant">Quincaillerie spécialisée, profilés aluminium, joints et fixations de haute précision pour vos installations.</p>
-</div>
-<!-- Solutions de douche -->
-<div class="bg-white border border-primary/10 p-6 md:p-8 shadow-lg hover:-translate-y-2 transition-transform duration-300 group cursor-pointer" onclick="openProductModal('douche')">
-<div class="w-16 h-16 bg-primary/5 text-primary flex items-center justify-center mb-6 group-hover:bg-secondary group-hover:text-white transition-colors duration-300">
-<span class="material-symbols-outlined text-3xl">shower</span>
-</div>
-<h3 class="text-headline-md font-bold text-primary uppercase tracking-tight mb-4">Solutions Douche</h3>
-<p class="text-body-md text-on-surface-variant">Cabines en verre sur mesure, parois italiennes et accessoires sanitaires design pour des espaces de bain modernes.</p>
-</div>
+
 <!-- Matériaux Pro -->
-<div class="bg-white border border-primary/10 p-6 md:p-8 shadow-lg hover:-translate-y-2 transition-transform duration-300 group cursor-pointer" onclick="openProductModal('pro')">
-<div class="w-16 h-16 bg-primary/5 text-primary flex items-center justify-center mb-6 group-hover:bg-secondary group-hover:text-white transition-colors duration-300">
-<span class="material-symbols-outlined text-3xl">construction</span>
+<div class="group cursor-pointer relative overflow-hidden h-72 md:h-80 sf-item" onclick="openProductModal('accessoires')">
+  <div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110" style="background-image: url('https://images.unsplash.com/photo-1504307651254-35680f356f58?q=80&w=900&auto=format&fit=crop')"></div>
+  <div class="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/40 to-transparent"></div>
+  <div class="absolute inset-0 bg-secondary/0 group-hover:bg-secondary/20 transition-colors duration-500"></div>
+  <div class="absolute bottom-0 left-0 right-0 p-6 flex flex-col justify-end">
+    <span class="material-symbols-outlined text-secondary text-2xl mb-2 group-hover:scale-110 transition-transform">construction</span>
+    <h3 class="text-xl font-headline-display text-white font-black uppercase tracking-tight mb-1">Matériaux Pro</h3>
+    <p class="text-white/70 text-sm leading-snug">Colles, mastics, outillage pour professionnels du bâtiment.</p>
+    <span class="mt-3 inline-flex items-center gap-2 text-secondary text-xs font-bold uppercase tracking-widest group-hover:gap-4 transition-all">Voir le catalogue <span class="material-symbols-outlined text-base">arrow_forward</span></span>
+  </div>
 </div>
-<h3 class="text-headline-md font-bold text-primary uppercase tracking-tight mb-4">Matériaux Pro</h3>
-<p class="text-body-md text-on-surface-variant">Produits d'étanchéité, colles structurelles, outillage spécifique et consommables pour les exigences des chantiers.</p>
+
+<!-- Plomberie & Sanitaire -->
+<div class="group cursor-pointer relative overflow-hidden h-72 md:h-80 sf-item" onclick="openProductModal('plomberie')">
+  <div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110" style="background-image: url('https://images.unsplash.com/photo-1608303588026-884930af2559?q=80&w=900&auto=format&fit=crop')"></div>
+  <div class="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/40 to-transparent"></div>
+  <div class="absolute inset-0 bg-secondary/0 group-hover:bg-secondary/20 transition-colors duration-500"></div>
+  <div class="absolute bottom-0 left-0 right-0 p-6 flex flex-col justify-end">
+    <span class="material-symbols-outlined text-secondary text-2xl mb-2 group-hover:scale-110 transition-transform">plumbing</span>
+    <h3 class="text-xl font-headline-display text-white font-black uppercase tracking-tight mb-1">Plomberie & Sanitaire</h3>
+    <p class="text-white/70 text-sm leading-snug">Robinetterie, tuyauterie et raccords pour installations résidentielles.</p>
+    <span class="mt-3 inline-flex items-center gap-2 text-secondary text-xs font-bold uppercase tracking-widest group-hover:gap-4 transition-all">Voir le catalogue <span class="material-symbols-outlined text-base">arrow_forward</span></span>
+  </div>
 </div>
-<!-- Plomberie -->
-<div class="bg-white border border-primary/10 p-6 md:p-8 shadow-lg hover:-translate-y-2 transition-transform duration-300 group cursor-pointer" onclick="openProductModal('plomberie')">
-<div class="w-16 h-16 bg-primary/5 text-primary flex items-center justify-center mb-6 group-hover:bg-secondary group-hover:text-white transition-colors duration-300">
-<span class="material-symbols-outlined text-3xl">plumbing</span>
-</div>
-<h3 class="text-headline-md font-bold text-primary uppercase tracking-tight mb-4">Plomberie</h3>
-<p class="text-body-md text-on-surface-variant">Tuyauterie, robinetterie haut de gamme et raccords fiables pour des installations résidentielles ou commerciales.</p>
-</div>
+
 </div>
 </section>
 <!-- 03 - Nos Solutions -->
