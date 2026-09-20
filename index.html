@@ -586,14 +586,28 @@
 </head>
 <body class="bg-surface text-on-background font-body-md antialiased overflow-x-hidden selection:bg-secondary/30 selection:text-primary">
 <!-- TopNavBar - Glass Vitre Style -->
+<!-- Mobile Top Header -->
+<div class="lg:hidden fixed top-0 w-full z-50 bg-[#001360]/90 backdrop-blur-md px-4 py-3 flex justify-between items-center border-b border-white/10">
+    <a href="index.html" class="flex items-center gap-2 text-decoration-none">
+        <div class="w-8 h-8 bg-secondary flex items-center justify-center rounded-sm">
+            <span class="material-symbols-outlined text-white text-xl">view_in_ar</span>
+        </div>
+        <span class="font-headline-display font-black tracking-tighter block uppercase">
+            <span class="text-white">Vitro</span><span class="text-secondary">MZ</span>
+        </span>
+    </a>
+    <a href="#devis" class="text-[10px] font-bold text-white uppercase tracking-widest border border-secondary px-3 py-1.5 rounded-sm hover:bg-secondary transition-colors">Devis</a>
+</div>
+
 <nav id="main-nav" class="fixed top-0 w-full z-50 hidden lg:block">
   <div class="nav-inner flex justify-between items-center w-full px-margin-desktop max-w-container-max mx-auto">
     <!-- Logo -->
-    <a href="index.html" class="flex items-center gap-4 shrink-0 text-decoration-none">
-      <img alt="Ets Vitro MZ Logo" class="h-12 w-auto object-contain transition-all duration-300 brightness-0 invert" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAK9d5C7E4LmkWPy3VZpXxzo7BmkPN8F97OqNPQ5GavikiAklgQtZOeej8VfDAgwYuJjSJalRZ_bswvornVf_L4RmUPKvPbGzIAZ4nYO_Igi3NYIpkXCsW1_nr3hTJq4md_rFQwL0Sn8Ij87ZhWB9vMclTwJTKFuV1OQl_b3M_S_Q9btmMX7a8r9gxOKfJiVlMsbbF02CQRUZyCjcu7oXACqEFARnPcZkZICRiqWz13h2jf3JOzyDFLIMhWe4X1MAoVeks"/>
-      <span class="font-headline-display font-black tracking-tighter hidden xl:block uppercase relative w-[130px] h-[28px]">
-        <span class="absolute inset-0 flex items-center brand-1"><span class="text-white">Vitro</span>&nbsp;<span class="text-secondary">MZ</span></span>
-        <span class="absolute inset-0 flex items-center brand-2"><span class="text-secondary">MZ</span>&nbsp;<span class="text-white">Vitro</span></span>
+    <a href="index.html" class="flex items-center gap-3 shrink-0 text-decoration-none group">
+      <div class="w-10 h-10 bg-secondary flex items-center justify-center rounded-sm">
+        <span class="material-symbols-outlined text-white text-2xl group-hover:rotate-45 transition-transform duration-300">view_in_ar</span>
+      </div>
+      <span class="font-headline-display font-black tracking-tighter block uppercase relative w-[130px] h-[28px] overflow-hidden">
+        <span class="absolute inset-0 flex items-center brand-1"><span class="text-white text-xl">Vitro</span><span class="text-secondary text-xl">MZ</span></span>
       </span>
     </a>
 
